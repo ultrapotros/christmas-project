@@ -18,11 +18,11 @@ import { StaticRouter } from 'react-router-dom/server';
 function Router(props) {
   const { children } = props;
   if (typeof window === 'undefined') {
-    return <StaticRouter location="/cart">{children}</StaticRouter>;
+    return <StaticRouter location="/single-category/:category">{children}</StaticRouter>;
   }
 
   return (
-    <MemoryRouter initialEntries={['/cart']} initialIndex={0}>
+    <MemoryRouter initialEntries={['/single-category/:category']} initialIndex={0}>
       {children}
     </MemoryRouter>
   );
@@ -52,15 +52,17 @@ function MyTabs() {
   // This means that if you have nested routes like:
   // users, users/new, users/edit.
   // Then the order should be ['users/add', 'users/edit', 'users'].
-  const routes = [{route:'/', label: 'inicio'}, {route:'/cart', label: 'cart'}, {route:'/about-us', label: 'about-us'}];
+  const routes = [{route:'/', label: 'inicio'}, {route:"single-category/men's%20clothing", label: "men's clothing"}, {route:"single-category/women's%20clothing", label: 'single-category/'}, {route:"single-category/jewerely", label: 'single-category/'}, {route:"single-category/electronic", label: 'single-category/'}, {route:'/about-us', label: 'about-us'}];
   const routeMatch = useRouteMatch(routes);
   const currentTab = routeMatch?.pattern?.path;
+  const categories = ["men's clothing", "women's clothing", "jewerely","electronic"];
   console.log(currentTab);
-
+ 
   return (
     <Tabs value={currentTab}>
       <Tab label="Inbox" value="/" to="/" component={Link} />
-      <Tab label={routes[1].label} value={routes[1].route} to={routes[1].route} component={Link} /> {/* el label es el titulo de la etiqueta y el to lo que se muestra en el CurrentRoute */}
+      {categories.map((category, index) => <Tab label={category} key={`category${index}`} value={routes[index+1].route} to={routes[index+1].route} component={Link} />)}
+       {/* el label es el titulo de la etiqueta y el to lo que se muestra en el CurrentRoute */}
       <Tab label="about-us" value="/about-us" to="/about-us" component={Link} /> {/* para que ponga el subrayado tienen que coincidir el value y el to  */}
     </Tabs>
   );
