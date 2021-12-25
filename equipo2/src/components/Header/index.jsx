@@ -18,11 +18,11 @@ import { StaticRouter } from 'react-router-dom/server';
 function Router(props) {
   const { children } = props;
   if (typeof window === 'undefined') {
-    return <StaticRouter location="/drafts">{children}</StaticRouter>;
+    return <StaticRouter location="/cart">{children}</StaticRouter>;
   }
 
   return (
-    <MemoryRouter initialEntries={['/drafts']} initialIndex={0}>
+    <MemoryRouter initialEntries={['/cart']} initialIndex={0}>
       {children}
     </MemoryRouter>
   );
@@ -34,9 +34,10 @@ Router.propTypes = {
 
 function useRouteMatch(patterns) {
   const { pathname } = useLocation();
-
+  console.log(pathname);
+  console.log(patterns);          
   for (let i = 0; i < patterns.length; i += 1) {
-    const pattern = patterns[i];
+    const pattern = patterns[i].route;
     const possibleMatch = matchPath(pattern, pathname);
     if (possibleMatch !== null) {
       return possibleMatch;
@@ -51,15 +52,16 @@ function MyTabs() {
   // This means that if you have nested routes like:
   // users, users/new, users/edit.
   // Then the order should be ['users/add', 'users/edit', 'users'].
-  const routes = ['/inbox/:id', '/drafts', '/trash'];
+  const routes = [{route:'/', label: 'inicio'}, {route:'/cart', label: 'cart'}, {route:'/about-us', label: 'about-us'}];
   const routeMatch = useRouteMatch(routes);
   const currentTab = routeMatch?.pattern?.path;
+  console.log(currentTab);
 
   return (
     <Tabs value={currentTab}>
-      <Tab label="Inbox" value="/inbox/:id" to="/inbox/1" component={Link} />
-      <Tab label="Drafts" value={routes[1]} to="/drafts" component={Link} />
-      <Tab label="Trash" value="/trash" to="/trash" component={Link} />
+      <Tab label="Inbox" value="/" to="/" component={Link} />
+      <Tab label={routes[1].label} value={routes[1].route} to={routes[1].route} component={Link} /> {/* el label es el titulo de la etiqueta y el to lo que se muestra en el CurrentRoute */}
+      <Tab label="about-us" value="/about-us" to="/about-us" component={Link} /> {/* para que ponga el subrayado tienen que coincidir el value y el to  */}
     </Tabs>
   );
 }
@@ -69,20 +71,20 @@ function CurrentRoute() {
 
   return (
     <Typography variant="body2" sx={{ pb: 2 }} color="text.secondary">
-      Current route: {location.pathname}
+      Current route: {location.pathname} {/* este es el título */}
     </Typography>
   );
 }
 
 export default function TabsRouter() {
   return (
-    <Router>
+
       <Box sx={{ width: '100%' }}>
         <Routes>
           <Route path="*" element={<CurrentRoute />} />
         </Routes>
         <MyTabs />
       </Box>
-    </Router>
+
   );
 }
