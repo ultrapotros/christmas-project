@@ -29,8 +29,9 @@ function App() {
   return (
     <Router >
     <div className="App">
+
       <TabsRouter />
-      {/* <Header /> */}
+
       <Routes >
         <Route path="/" element={<h2>HomePage</h2>} />
         <Route path="/single-product/:id" element={<h2>SingleProduct</h2>} />
@@ -47,3 +48,4 @@ function App() {
 
 
 export default App;
+
