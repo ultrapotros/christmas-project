@@ -44,7 +44,7 @@ function CheckboxSort() {
   const [checked, setChecked] = React.useState(true);
 
   const handleChange = (event) => {
-    setChecked(event.target.value);
+    itemData.sort(event.target.value.category);
   };
 
   return (
