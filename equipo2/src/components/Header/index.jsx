@@ -14,6 +14,8 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import webLogo from './storeLogo.png';
 
 function Router(props) {
   const { children } = props;
@@ -48,23 +50,22 @@ function useRouteMatch(patterns) {
 }
 
 function MyTabs() {
-  // You need to provide the routes in descendant order.
-  // This means that if you have nested routes like:
-  // users, users/new, users/edit.
-  // Then the order should be ['users/add', 'users/edit', 'users'].
-  const routes = [{route:'/', label: 'inicio'}, {route:"single-category/men's%20clothing", label: "men's clothing"}, {route:"single-category/women's%20clothing", label: 'single-category/'}, {route:"single-category/jewerely", label: 'single-category/'}, {route:"single-category/electronic", label: 'single-category/'}, {route:'/about-us', label: 'about-us'}];
+  const cartLogo = <ShoppingCartRoundedIcon /> ;
+  const routes = [{route:'/', label: 'home'}, {route:"/single-category/men's%20clothing", label: "men's clothing"},
+   {route:"/single-category/women's%20clothing", label: "women's clothing"}, {route:"/single-category/jewerely", label: 'jewerely'},
+    {route:"/single-category/electronic", label: 'electronic'}, {route:'/about-us', label: 'about-us'}, 
+    {route:'/cart', label: cartLogo}];
+  
   const routeMatch = useRouteMatch(routes);
   const currentTab = routeMatch?.pattern?.path;
-  const categories = ["men's clothing", "women's clothing", "jewerely","electronic"];
-  console.log(currentTab);
- 
-  return (
-    <Tabs value={currentTab}>
-      <Tab label="Inbox" value="/" to="/" component={Link} />
-      {categories.map((category, index) => <Tab label={category} key={`category${index}`} value={routes[index+1].route} to={routes[index+1].route} component={Link} />)}
-       {/* el label es el titulo de la etiqueta y el to lo que se muestra en el CurrentRoute */}
-      <Tab label="about-us" value="/about-us" to="/about-us" component={Link} /> {/* para que ponga el subrayado tienen que coincidir el value y el to  */}
+  return (<React.Fragment>
+    <div className="topHeader">
+      <img src={webLogo} alt='logo'/>
+    </div>
+    <Tabs value={currentTab} className="nav">
+      {routes.map((element, index) => <Tab label={routes[index].label} key={`category${index}`} value={routes[index].route} to={routes[index].route} component={Link} />)}
     </Tabs>
+  </React.Fragment>
   );
 }
 
