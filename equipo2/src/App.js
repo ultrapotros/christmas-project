@@ -1,5 +1,5 @@
 import './App.css';
-import TabsRouter from './components/Header';
+import Header from './components/Header';
 import axios from 'axios';
 import React , { useState , useEffect } from 'react'
 import {
@@ -29,8 +29,7 @@ function App() {
   return (
     <Router >
     <div className="App">
-      <TabsRouter />
-      {/* <Header /> */}
+      <Header /> 
       <Routes >
         <Route path="/" element={<h2>HomePage</h2>} />
         <Route path="/single-product/:id" element={<h2>SingleProduct</h2>} />
