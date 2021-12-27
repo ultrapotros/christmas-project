@@ -1,4 +1,5 @@
 import './App.css';
+import TabsRouter from './components/Header';
 import axios from 'axios';
 import React , { useState , useEffect } from 'react'
 import {
@@ -28,8 +29,9 @@ function App() {
   return (
     <Router >
     <div className="App">
-    
-      {/* <Header /> */}
+
+      <TabsRouter />
+
       <Routes >
         <Route path="/" element={<h2>HomePage</h2>} />
         <Route path="/single-product/:id" element={<h2>SingleProduct</h2>} />
@@ -46,3 +48,4 @@ function App() {
 
 
 export default App;
+
