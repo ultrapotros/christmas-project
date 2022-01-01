@@ -27,7 +27,6 @@ function App() {
     fetchApi();
 
   }, [])
-  console.log(products);
   return (
     <Router >
     <div className="App">

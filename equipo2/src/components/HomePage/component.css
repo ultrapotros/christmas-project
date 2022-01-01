@@ -2,3 +2,6 @@
     margin: auto;
     margin-top:10px;
 }
+img {
+    object-fit: contain!important;
+}

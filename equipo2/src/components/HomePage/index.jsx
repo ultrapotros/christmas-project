@@ -4,25 +4,29 @@ import ImageListItem from '@mui/material/ImageListItem';
 import './component.css';
 
 function srcset(image, size, rows = 1, cols = 1) {
+  let col = Math.floor(Math.random() * (5 - 2)) + 1;
+  let row = Math.floor(Math.random() * (3 - 1)) + 1;
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * cols}&h=${
-      size * rows
+    srcSet: `${image}?w=${size * col}&h=${
+      size * row
     }&fit=crop&auto=format&dpr=2 2x`,
   };
 }
 
 export default function HomePage(products) {
-
+  const aux2 = Object.values(products);
+  let aux = [...aux2[0]];
   return (
     <ImageList className="imagesContainer"
       sx={{ width: 3/4, height: 450 }}
       variant="quilted"
       cols={4}
       rowHeight={121}
+      gap={10}
     >
-      {itemData.map((item) => (
-        <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
+      {aux.map((item) => (
+        <ImageListItem key={item.image} cols={1} rows={Math.floor(Math.random() * (3 - 1)) + 1}>
           <img
             {...srcset(item.image, 200, item.rows, item.cols)}
             alt={item.title}
