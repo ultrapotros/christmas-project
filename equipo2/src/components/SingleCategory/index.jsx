@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React , { useState , useEffect } from 'react'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
@@ -11,7 +11,7 @@ import Checkbox from '@mui/material/Checkbox';
  * Component to display the products
  * @returns component react
  */
-function TitlebarBelowImageList() {
+function TitlebarBelowImageList(itemData) {
   return (
     <ImageList sx={{ width: 500, height: 450 }}>
       {itemData.map((item) => (
@@ -40,7 +40,7 @@ function TitlebarBelowImageList() {
  * Component for ordering information
  * @returns component react
  */
-function CheckboxSort() {
+function CheckboxSort(itemData) {
   const [checked, setChecked] = React.useState(true);
 
   const handleChange = (event) => {
@@ -51,28 +51,23 @@ function CheckboxSort() {
     <FormGroup>
       <FormControlLabel control={<Checkbox 
                                   onChange={handleChange} 
-                                  inputProps={ {'category': 'price'} }/>} label="Precio" />
+                                  inputProps={ {'category': 'price'} }/>} 
+                                  label="Precio" />
       <FormControlLabel control={<Checkbox 
                                   onChange={handleChange} 
-                                  inputProps={ {'category': 'rating'} }/>} label="Valoracion" />
+                                  inputProps={ {'category': 'rating'} }/>} 
+                                  label="Valoracion" />
     </FormGroup>
   );
 }
 
 export default function SingleCategory() {
+  const { products } = useState();
+  console.log('products:', products);
+  const itemData = products;
   return (<div>
-      <CheckboxSort />
-      <TitlebarBelowImageList />
+      <CheckboxSort itemData={itemData}/>
+      {/*<TitlebarBelowImageList itemData={itemData}/>*/}
     </div>
   );
 }
-
-id
-title
-price
-description
-category
-image
-rating
- -rate
- -count
