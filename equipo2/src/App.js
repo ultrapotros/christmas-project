@@ -2,13 +2,15 @@ import './App.css';
 import TabsRouter from './components/Header';
 import SingleCategory from './components/SingleCategory';
 import axios from 'axios';
-import React , { useState , useEffect } from 'react'
+import React , { useState , useEffect, createContext } from 'react'
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
   } from "react-router-dom";
+
+export const Context = createContext(null);
 
 function App() {
 
@@ -31,6 +33,7 @@ function App() {
 
   return (
     <Router >
+    <Context.Provider value={products}>
     <div className="App">
 
       <TabsRouter />
@@ -45,6 +48,7 @@ function App() {
        {/* <Footer /> */}
 
     </div>
+    </Context.Provider>
     </Router>
   );
 }
