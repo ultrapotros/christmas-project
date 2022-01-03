@@ -9,6 +9,8 @@ import Rating from '@mui/material/Rating';
 import CircularProgress from '@mui/material/CircularProgress';
 import Skeleton from '@mui/material/Skeleton';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 function SingleProduct() {
 
@@ -42,6 +44,15 @@ function SingleProduct() {
            <Divider />
            <p>{description}</p>
            <Divider />
+           <div className="buy-options">
+           <Button variant="contained" sx={{mr: 2}} startIcon={<ShoppingCartCheckoutIcon /> }>
+            Añadir
+          </Button>
+          <Button variant="outlined" color="success">
+            Comprar
+          </Button>
+           </div>
+           
 
 
            </div> 

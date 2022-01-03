@@ -34,7 +34,7 @@ function App() {
     <Context.Provider value={products}>
     <div className="App">
 
-      {/*<TabsRouter />**/}
+      <TabsRouter />
 
       <Routes >
         <Route path="/" element={<h2>HomePage</h2>} />
