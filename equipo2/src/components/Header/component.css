@@ -1,0 +1,18 @@
+/* .topHeader {
+    display: flex;
+    justify-content:space-between;
+    max-height: 100px;
+    align-items:center;
+    margin-right: 70px;
+} */
+/* .nav {
+    justify-content:space-between;
+    margin: auto;
+} */
+.MuiTabs-flexContainer {
+    justify-content:space-between;
+    margin-right: 50px;
+}
+.MuiTypography-root {
+    visibility: hidden;
+}
