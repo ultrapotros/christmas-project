@@ -18,7 +18,6 @@ function SingleProduct() {
   const {id} = useParams()
   //We take product with id from the URL
   const productData = useContext(Context).filter(d=>d.id==id)[0];
-  console.log(productData);
   //There are times when the component is mounted without the context with data arriving.
   const isData = productData != undefined;
   //We render in case we have data already loaded. In case of no data, circular load is displayed.
