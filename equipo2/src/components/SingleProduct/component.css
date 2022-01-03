@@ -1,0 +1,34 @@
+.single-product {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    flex-grow: 0;
+}
+
+.left-side {
+    display: flex;
+    justify-content: center;
+}
+
+.left-side>img {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.right-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-single {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.single-rating {
+    display: flex;
+}
