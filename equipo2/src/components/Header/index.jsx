@@ -35,9 +35,7 @@ Router.propTypes = {
 };
 
 function useRouteMatch(patterns) {
-  const { pathname } = useLocation();
-  console.log(pathname);
-  console.log(patterns);          
+  const { pathname } = useLocation();      
   for (let i = 0; i < patterns.length; i += 1) {
     const pattern = patterns[i].route;
     const possibleMatch = matchPath(pattern, pathname);
