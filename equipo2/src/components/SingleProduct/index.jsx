@@ -3,14 +3,7 @@ import {Context } from "../../App";
 
 import React , { useState , useEffect , useContext} from 'react'
 import { useParams } from 'react-router-dom'
-
-import Divider from '@mui/material/Divider';
-import Rating from '@mui/material/Rating';
-import CircularProgress from '@mui/material/CircularProgress';
-import Skeleton from '@mui/material/Skeleton';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+import { Divider , Rating , CircularProgress, Skeleton, Box, Button, ShoppingCartCheckoutIcon } from '@mui/material';
 
 function SingleProduct() {
 
