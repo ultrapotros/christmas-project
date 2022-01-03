@@ -9,12 +9,7 @@
 .left-side {
     display: flex;
     justify-content: center;
-    width: 50%;
-}
-
-.left-side>img {
-    margin-top: 20px;
-    height: 300px;
+    width: 30%;
 }
 
 .right-side {
@@ -39,8 +34,4 @@
     margin-top: 15px;
     display: flex;
     justify-content: flex-end;
-}
-
-.buy-option button:first-child {
-    margin-right: 5px;
 }

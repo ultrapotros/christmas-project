@@ -1,9 +1,10 @@
 import './component.css';
 import {Context } from "../../App";
-
+import ReactImageMagnify from 'react-image-magnify';
 import React , { useState , useEffect , useContext} from 'react'
 import { useParams } from 'react-router-dom'
-import { Divider , Rating , CircularProgress, Skeleton, Box, Button, ShoppingCartCheckoutIcon } from '@mui/material';
+import { Divider , Rating , CircularProgress, Skeleton, Box, Button } from '@mui/material';
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
 function SingleProduct() {
 
@@ -20,7 +21,19 @@ function SingleProduct() {
 
       <div className="single-product">
         <div className="left-side">
-          <img src={image} />
+         {/*ReactImageMagnify takes as props smallImage to define the default image displayed and largeImage to define how the zoomed area will appear. */} 
+        <ReactImageMagnify {...{
+          smallImage: {
+        alt: title,
+        isFluidWidth: true, //Resize the image to the width available
+        src: image
+    },
+    largeImage: {
+        src: image,
+        width: 1200, // Define the size of the zoomed image.
+        height: 1800
+    }
+}} />
           </div> 
          <div className="right-side">
            <h2>{title}</h2>
