@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import './component.css';
-
+import { Context } from '../../App';
 function srcset(image, size, rows = 1, cols = 1) {
   let col = Math.floor(Math.random() * (5 - 2)) + 1;
   let row = Math.floor(Math.random() * (3 - 1)) + 1;
@@ -14,9 +15,8 @@ function srcset(image, size, rows = 1, cols = 1) {
   };
 }
 
-export default function HomePage(products) {
-  const aux2 = Object.values(products);
-  let aux = [...aux2[0]];
+export default function HomePage() {
+  const contextValue = useContext(Context);
   return (
     <ImageList className="imagesContainer"
       sx={{ width: 3/4, height: 450 }}
@@ -25,7 +25,7 @@ export default function HomePage(products) {
       rowHeight={121}
       gap={10}
     >
-      {aux.map((item) => (
+      {contextValue.map((item) => (
         <ImageListItem key={item.image} cols={1} rows={Math.floor(Math.random() * (3 - 1)) + 1}>
           <img
             {...srcset(item.image, 200, item.rows, item.cols)}
@@ -38,64 +38,5 @@ export default function HomePage(products) {
   );
 }
 
-const itemData = [
-  {
-    image: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-    title: 'Breakfast',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-    title: 'Burger',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-    title: 'Camera',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-    title: 'Coffee',
-    cols: 2,
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-    title: 'Hats',
-    cols: 2,
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-    title: 'Honey',
-    author: '@arwinneil',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-    title: 'Basketball',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-    title: 'Fern',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-    title: 'Mushrooms',
-    rows: 2,
-    cols: 2,
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-    title: 'Tomato basil',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-    title: 'Sea star',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-    title: 'Bike',
-    cols: 2,
-  },
-];
+
 

@@ -1,21 +1,13 @@
-/* .topHeader {
-    display: flex;
-    justify-content:space-between;
-    max-height: 100px;
-    align-items:center;
-    margin-right: 70px;
-} */
-/* .nav {
-    justify-content:space-between;
-    margin: auto;
-} */
+
 .MuiTabs-flexContainer {
     justify-content:space-between;
     margin-right: 50px;
 }
 .MuiTypography-root {
-    visibility: hidden;
     display: none;
+}
+.MuiTabs-root {
+    margin-bottom: 50px;
 }
 .topHeader {
     height: 10vh;
@@ -24,3 +16,10 @@
     height:100%;
     max-height: fit-content;
 }
+
+.css-heg063-MuiTabs-flexContainer {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
+}
+/* el problema de este autofit es el marcardor de debajo que se ven con todo el div y no con el elemento, 
+por lo que cuando se pone en dos lineas se ve mal */

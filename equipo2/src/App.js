@@ -2,13 +2,15 @@ import './App.css';
 import Header from './components/Header';
 import HomePage from './components/HomePage';
 import axios from 'axios';
-import React , { useState , useEffect } from 'react'
+import React , { useState , useEffect, createContext } from 'react'
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
   } from "react-router-dom";
+
+export const Context = createContext(null);
 
 function App() {
 
@@ -29,10 +31,11 @@ function App() {
   }, [])
   return (
     <Router >
+    <Context.Provider value={products}>
     <div className="App">
       <Header /> 
       <Routes >
-        <Route path="/" element={<HomePage products ={products} />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/single-product/:id" element={<h2>SingleProduct</h2>} />
         <Route path="/single-category/:cat" element={<h2>SingleCategory</h2>} />
         <Route path="/cart" element={<h2>Cart</h2>} />
@@ -41,6 +44,7 @@ function App() {
        {/* <Footer /> */}
 
     </div>
+    </Context.Provider>
     </Router>
   );
 }

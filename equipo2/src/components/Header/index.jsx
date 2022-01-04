@@ -58,8 +58,8 @@ function MyTabs() {
     <div className="topHeader">
       <img src={webLogo} alt='logo'/>
     </div>
-    <Tabs value={currentTab} className="nav">
-      {routes.map((element, index) => <Tab label={routes[index].label} key={`category${index}`} value={routes[index].route} to={routes[index].route} component={Link} />)}
+    <Tabs value={currentTab} id="nav">
+      {routes.map((element, index) => <Tab label={element.label} key={`category${index}`} value={element.route} to={element.route} component={Link} />)}
     </Tabs>
   </React.Fragment>
   );
