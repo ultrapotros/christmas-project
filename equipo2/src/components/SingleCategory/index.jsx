@@ -53,7 +53,7 @@ export default function SingleCategory() {
   function BasicButtonGroup() {
     return (
       <FormControl component="fieldset">
-        <FormLabel component="legend" sx={{ color:'#1976d2' }}>Ordenado por</FormLabel>
+        <FormLabel component="legend" sx={{ color:'#1976d2' }}>Order by</FormLabel>
         <ButtonGroup variant="text" aria-label="outlined primary button group">
           <Button onClick={() => {
             sortElements('price', 'ascen');
@@ -61,21 +61,21 @@ export default function SingleCategory() {
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('maxPrice');
           }}>
-           Precio creciente </Button>
+           Increasing price </Button>
           <Button onClick={() => {
             sortElements('price', 'descen');
             //categoryItems.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('minPrice');
           }}>
-            Precio decreciente </Button>
+            Decreasing price </Button>
           <Button onClick={() => {
             sortElements('rate', 'ascen');
             //categoryItems.sort((a,b) => (a.rating.rate > b.rating.rate) ? -1 : ((b.rating.rate > a.rating.rate) ? 1 : 0)); 
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('rating');
           }}>
-            Mejor valorado </Button>
+            Best rated </Button>
         </ButtonGroup>
       </FormControl>
     );
@@ -111,7 +111,7 @@ export default function SingleCategory() {
             <ImageListItemBar
               title={item.title}
               subtitle={<>
-                <p>Precio: {item.price} € </p>
+                <p>Price: {item.price} € </p>
                 <Rating name={item.title} value={item.rating.rate} precision={0.1} readOnly />
                 </>} 
               position="below"

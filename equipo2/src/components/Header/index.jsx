@@ -81,9 +81,9 @@ export default function TabsRouter() {
   return (
 
       <Box sx={{ width: '100%' }}>
-        <Routes>
+        {/* <Routes>
           <Route path="*" element={<CurrentRoute />} />
-        </Routes>
+        </Routes> */}
         <MyTabs />
       </Box>
 
