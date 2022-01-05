@@ -24,7 +24,27 @@ export default function SingleCategory() {
 
   useEffect(() => {
     setCategoryItems(itemData.filter(item => item.category === cat));
+    setOrderBy('null');
   }, [cat]);
+
+  /**
+   * function for sorting elements
+   * @arguments objectProp=string, order=string;
+   */
+  function sortElements(objectProp, order){
+    switch (objectProp) {
+      case 'price':
+        if(order === 'ascen') {
+          categoryItems.sort((a,b) => (a[objectProp] > b[objectProp]) ? -1 : ((b[objectProp] > a[objectProp]) ? 1 : 0));   
+        } else {
+          categoryItems.sort((a,b) => (a[objectProp] > b[objectProp]) ? 1 : ((b[objectProp] > a[objectProp]) ? -1 : 0));
+        }
+        break;
+      case 'rate':
+        categoryItems.sort((a,b) => (a.rating[objectProp] > b.rating[objectProp]) ? -1 : ((b.rating[objectProp] > a.rating[objectProp]) ? 1 : 0));  
+        break; 
+    }
+  }
 
   /**
    * component to show the different types of ordering for the products
@@ -36,19 +56,22 @@ export default function SingleCategory() {
         <FormLabel component="legend" sx={{ color:'#1976d2' }}>Ordenado por</FormLabel>
         <ButtonGroup variant="text" aria-label="outlined primary button group">
           <Button onClick={() => {
-            categoryItems.sort((a,b) => (a.price > b.price) ? -1 : ((b.price > a.price) ? 1 : 0)); 
+            sortElements('price', 'ascen');
+            //categoryItems.sort((a,b) => (a.price > b.price) ? -1 : ((b.price > a.price) ? 1 : 0)); 
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('maxPrice');
           }}>
            Precio creciente </Button>
           <Button onClick={() => {
-            categoryItems.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+            sortElements('price', 'descen');
+            //categoryItems.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('minPrice');
           }}>
             Precio decreciente </Button>
           <Button onClick={() => {
-            categoryItems.sort((a,b) => (a.rating.rate > b.rating.rate) ? -1 : ((b.rating.rate > a.rating.rate) ? 1 : 0)); 
+            sortElements('rate', 'ascen');
+            //categoryItems.sort((a,b) => (a.rating.rate > b.rating.rate) ? -1 : ((b.rating.rate > a.rating.rate) ? 1 : 0)); 
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('rating');
           }}>
