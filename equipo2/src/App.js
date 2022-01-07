@@ -1,6 +1,7 @@
 import "./App.css";
 import TabsRouter from "./components/Header";
 import SingleProduct from "./components/SingleProduct";
+import Cart from "./components/Cart"
 import axios from "axios";
 import React, { useState, useEffect, createContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -39,7 +40,7 @@ function App() {
               path="/single-category/:cat"
               element={<h2>SingleCategory</h2>}
             />
-            <Route path="/cart" element={<h2>Cart</h2>} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/about-us" element={<h2>About us</h2>} />
           </Routes>
           {/* <Footer /> */}
