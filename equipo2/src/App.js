@@ -1,5 +1,6 @@
 import './App.css';
-import TabsRouter from './components/Header';
+import Header from './components/Header';
+import HomePage from './components/HomePage';
 import SingleProduct from './components/SingleProduct';
 import axios from 'axios';
 import React , { useState , useEffect, createContext } from 'react'
@@ -34,16 +35,16 @@ function App() {
     <Context.Provider value={products}>
     <div className="App">
 
-      <TabsRouter />
+      <Header />
 
       <Routes >
-        <Route path="/" element={<h2>HomePage</h2>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/single-product/:id" element={<SingleProduct />} />
         <Route path="/single-category/:cat" element={<h2>SingleCategory</h2>} />
         <Route path="/cart" element={<h2>Cart</h2>} />
         <Route path="/about-us" element={<h2>About us</h2>} />
        </Routes>
-       {/* <Footer /> */}
+      {/*  <Footer />  */}
 
     </div>
     </Context.Provider>

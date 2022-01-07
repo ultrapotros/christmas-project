@@ -1,0 +1,8 @@
+.imagesContainer {
+    margin: auto;
+    margin-top:10px;
+}
+
+#images .productImages {
+    object-fit: contain;
+}

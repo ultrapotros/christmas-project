@@ -1,18 +1,18 @@
-/* .topHeader {
-    display: flex;
-    justify-content:space-between;
-    max-height: 100px;
-    align-items:center;
-    margin-right: 70px;
-} */
-/* .nav {
-    justify-content:space-between;
-    margin: auto;
-} */
-.MuiTabs-flexContainer {
-    justify-content:space-between;
-    margin-right: 50px;
+
+.topHeader {
+    height: 10vh;
 }
-.MuiTypography-root {
-    visibility: hidden;
+.topHeader img {
+    height:100%;
+    max-height: fit-content;
+}
+#nav {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
+}
+#nav a:focus {
+    border-bottom: 2px solid #1976d2;
 }
