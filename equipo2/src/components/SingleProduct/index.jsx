@@ -21,7 +21,8 @@ function SingleProduct() {
 
       <div className="single-product">
         <div className="left-side">
-         {/*ReactImageMagnify takes as props smallImage to define the default image displayed and largeImage to define how the zoomed area will appear. */} 
+         {/*ReactImageMagnify takes as props smallImage to
+          define the default image displayed and largeImage to define how the zoomed area will appear. */} 
         <ReactImageMagnify {...{
           smallImage: {
         alt: title,
@@ -41,7 +42,11 @@ function SingleProduct() {
            <div className="section-single">
                 <h3>{price}€</h3>
                 <div className="single-rating">
-                <Rating name="half-rating-read" defaultValue={rating.rate} precision={0.2} readOnly size="small"/><small> de {rating.count} votaciones.</small>
+                <Rating name="half-rating-read" 
+                  defaultValue={rating.rate} 
+                  precision={0.2} 
+                  readOnly size="small"/>
+                  <small> de {rating.count} votaciones.</small>
                 </div>
                 
            </div>
@@ -79,6 +84,5 @@ function SingleProduct() {
   }
   
 }
-
 
 export default SingleProduct;
