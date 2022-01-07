@@ -6,7 +6,7 @@ import React , {useState , useEffect, useContext} from 'react'
 function Cart() {
     const [currentProducts,setCurrentProducts] = useState([]);
     const context = useContext(Context);
-    const cartContext = useContext(CartContext);
+    const {cart,setCart} = useContext(CartContext);
 
     useEffect(() => {
         
