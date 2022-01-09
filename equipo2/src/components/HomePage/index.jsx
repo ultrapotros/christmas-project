@@ -17,7 +17,7 @@ function srcset(image, size, rows = 1, cols = 1) {
 
 export default function HomePage() {
   const contextValue = useContext(Context);
-  return (
+      return (
     <ImageList className="imagesContainer"
       sx={{ width: 3/4, height: 450 }}
       variant="quilted"
@@ -36,6 +36,7 @@ export default function HomePage() {
       ))}
     </ImageList>
   );
+
 }
 
 

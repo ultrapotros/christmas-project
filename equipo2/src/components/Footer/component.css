@@ -1,0 +1,28 @@
+.footerContainer {
+    position: fixed;
+    bottom: 0;
+    background-color:#1976d2;
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );    
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nav {
+    display:flex;
+    gap: 10px;
+}
+#social {
+    width: 100%;
+    display: flex;
+    gap: 0;
+    justify-content: flex-end;
+}
+#social a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    min-width: fit-content;
+}

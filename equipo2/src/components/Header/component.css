@@ -6,13 +6,17 @@
     height:100%;
     max-height: fit-content;
 }
-#nav {
+#headerNav {
     width: 92%;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 8px;
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
 }
-#nav a:focus {
+#headerNav a:focus {
     border-bottom: 2px solid #1976d2;
 }
+/* span {
+    display: none;
+}
+ */
