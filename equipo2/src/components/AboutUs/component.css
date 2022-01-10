@@ -1,0 +1,9 @@
+
+.AboutUs{
+    width: 80%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
