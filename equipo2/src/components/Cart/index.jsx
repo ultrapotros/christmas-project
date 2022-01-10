@@ -1,18 +1,47 @@
 import './component.css';
 import {Context,CartContext} from "../../App";
 import React , {useState , useEffect, useContext} from 'react'
+import {
+    Divider,
+    Button,
+  } from "@mui/material";
 
+  
+//Subcomponent to show list of cart items
+function ListItems(props) {
+  const { cart, setCart } = useContext(CartContext);
+  if(cart != null){
+    return (
+    <div className="list-items">
+      {cart.map((d) => {
+        return (
+          <div className="cart-item" key={d.id}>
+            <p>{d.title}</p>
+            <p>Qty: {d.qty}</p>
+          </div>
+        );
+      })}
+    </div>
+  ) }else{
+      return(
+    <p>Cart is empty!</p>
+  );
+  }
+}
 
 function Cart() {
-    const [currentProducts,setCurrentProducts] = useState([]);
     const context = useContext(Context);
-    const {cart,setCart} = useContext(CartContext);
+    
 
     useEffect(() => {
         
 
     }, []);
-    return(<h2>Cart</h2>);
+    return(<><div className="cart">
+        <h2>Cart</h2>
+         <Divider />
+         <ListItems />
+        </div></>);
 }
 
 export default Cart;
