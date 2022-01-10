@@ -14,14 +14,21 @@ function ListItems(props) {
     return (
     <div className="list-items">
       {cart.map((d) => {
-        return (
+        return (<>
+            <Divider /> 
           <div className="cart-item" key={d.id}>
+            <img src={d.img} alt={d.title} />
+            <div className="cart-item-details">
             <p>{d.title}</p>
             <p>Qty: {d.qty}</p>
+            </div>
+              
           </div>
+          </>
         );
       })}
     </div>
+
   ) }else{
       return(
     <p>Cart is empty!</p>
@@ -39,7 +46,6 @@ function Cart() {
     }, []);
     return(<><div className="cart">
         <h2>Cart</h2>
-         <Divider />
          <ListItems />
         </div></>);
 }
