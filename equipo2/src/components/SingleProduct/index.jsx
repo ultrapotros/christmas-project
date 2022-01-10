@@ -46,7 +46,7 @@ function SingleProduct() {
         window.localStorage.setItem("cart",JSON.stringify(tempCart));
       } else {
       //In case the item does not exist, we add the already existing items and the new item to the cart
-        tempCart = [...cart, { id: id, title: title,img:image,qty: 1 }];
+        tempCart = [...cart, { id: id, title: title,qty: 1 }];
         setCart(tempCart);
         window.localStorage.setItem("cart",JSON.stringify(tempCart));
       }
