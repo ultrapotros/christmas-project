@@ -101,7 +101,6 @@ export default function SingleCategory() {
           flexWrap: 'wrap',
           justifyContent: 'center',
           alignItems: 'stretch',
-          //width: '600px',
         }}
         >
         {categoryItems.map((item) => (
