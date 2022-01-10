@@ -40,10 +40,15 @@ function SingleProduct() {
           tempCart[i].qty++;
         }
       });
+      //If the product exists, +1 has already been added to qty, so the new cart is assigned to the state.
       if (exists) {
         setCart(tempCart);
+        window.localStorage.setItem("cart",JSON.stringify(tempCart));
       } else {
-        setCart([...cart, { id: id, title: title, qty: 1 }]);
+      //In case the item does not exist, we add the already existing items and the new item to the cart
+        tempCart = [...cart, { id: id, title: title, qty: 1 }];
+        setCart(tempCart);
+        window.localStorage.setItem("cart",JSON.stringify(tempCart));
       }
     }
     return (

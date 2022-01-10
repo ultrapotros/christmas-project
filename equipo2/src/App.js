@@ -28,7 +28,13 @@ function App() {
         console.log(err);
       }
     }
+    //We check for a cart in localStorage
+    function checkCart(){
+      let cartLocal = JSON.parse(window.localStorage.getItem("cart"));
+      setCart(cartLocal);
+    }
     fetchApi();
+    checkCart();
   }, []);
 
   //console.log(products);
