@@ -5,7 +5,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import './component.css';
 import { Context } from '../../App';
 function srcset(image, size, rows = 1, cols = 1) {
-  let col = Math.floor(Math.random() * (5 - 2)) + 1;
+  let col = Math.floor(Math.random() * (5 - 2)) + 1; /* each time we render in a different format  */
   let row = Math.floor(Math.random() * (3 - 1)) + 1;
   return {
     src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
@@ -18,8 +18,8 @@ function srcset(image, size, rows = 1, cols = 1) {
 export default function HomePage() {
   const contextValue = useContext(Context);
       return (
-    <ImageList className="imagesContainer"
-      sx={{ width: 3/4, height: 450 }}
+    <ImageList className="imagesContainer" 
+      sx={{ width: 3/4, height: 4/4 }}  /* here we give styles to the container where we show all the products */
       variant="quilted"
       cols={4}
       rowHeight={121}
