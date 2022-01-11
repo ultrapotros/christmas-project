@@ -104,7 +104,7 @@ export default function SingleCategory() {
         }}
         >
         {categoryItems.map((item) => (
-          <ImageListItem key={item.image} 
+          <ImageListItem id='ImageListItem' key={item.image} 
               to={`/single-product/${item.id}`} 
               component={Link}
               sx={{display: 'flex',
@@ -115,6 +115,7 @@ export default function SingleCategory() {
               }}
               >
             <img
+              //src={item.image}
               src={`${item.image}?w=248&fit=crop&auto=format`}
               srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
@@ -134,7 +135,7 @@ export default function SingleCategory() {
     );
   }
 
-  return (<div className='SingleCategory'>
+  return (<div id='SingleCategory'>
       <BasicButtonGroup />
       <TitlebarBelowImageList />
     </div>
