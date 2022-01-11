@@ -3,3 +3,7 @@
     margin-left: 80px;
     margin-right: 100px;
 }
+
+#ImageListItem > img {
+    height: 300px;
+}

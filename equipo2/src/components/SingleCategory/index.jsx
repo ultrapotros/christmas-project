@@ -46,9 +46,9 @@ export default function SingleCategory() {
         <ButtonGroup variant="text" aria-label="outlined primary button group">
           <Button onClick={() => {
             categoryItems.sort((a,b) => {if (a.price > b.price) {
-                return -1; 
+                return 1; 
               } else if (b.price > a.price) {
-                return 1;
+                return -1;
               } else {
                 return 0;
               }
@@ -59,9 +59,9 @@ export default function SingleCategory() {
            Increasing price </Button>
           <Button onClick={() => {
             categoryItems.sort((a,b) => {if (a.price > b.price) {
-              return 1; 
+              return -1; 
             } else if (b.price > a.price) {
-              return -1;
+              return 1;
             } else {
               return 0;
             }
