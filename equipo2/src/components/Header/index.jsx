@@ -35,9 +35,7 @@ Router.propTypes = {
 };
 
 function useRouteMatch(patterns) {
-  const { pathname } = useLocation();
-  console.log(pathname);
-  console.log(patterns);          
+  const { pathname } = useLocation();      
   for (let i = 0; i < patterns.length; i += 1) {
     const pattern = patterns[i].route;
     const possibleMatch = matchPath(pattern, pathname);
@@ -52,8 +50,8 @@ function useRouteMatch(patterns) {
 function MyTabs() {
   const cartLogo = <ShoppingCartRoundedIcon /> ;
   const routes = [{route:'/', label: 'home'}, {route:"/single-category/men's%20clothing", label: "men's clothing"},
-   {route:"/single-category/women's%20clothing", label: "women's clothing"}, {route:"/single-category/jewerely", label: 'jewerely'},
-    {route:"/single-category/electronic", label: 'electronic'}, {route:'/about-us', label: 'about-us'}, 
+   {route:"/single-category/women's%20clothing", label: "women's clothing"}, {route:"/single-category/jewelery", label: 'jewelery'},
+    {route:"/single-category/electronics", label: 'electronics'}, {route:'/about-us', label: 'about-us'}, 
     {route:'/cart', label: cartLogo}];
   
   const routeMatch = useRouteMatch(routes);
@@ -83,9 +81,9 @@ export default function TabsRouter() {
   return (
 
       <Box sx={{ width: '100%' }}>
-        <Routes>
+        {/* <Routes>
           <Route path="*" element={<CurrentRoute />} />
-        </Routes>
+        </Routes> */}
         <MyTabs />
       </Box>
 
