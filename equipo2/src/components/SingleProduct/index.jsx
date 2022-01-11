@@ -28,22 +28,24 @@ function SingleProduct() {
     const { title, image, price, description, rating } = productData;
     //Function to handle addToCart
     function handleAddCart() {
-      console.log(cart);
       //We prepare a modified cartContext
       let tempCart = cart;
       //In case we want to add an existing element, we add 1 to quantity
       let exists = false;
       tempCart.map((d, i) => {
         if (d.id == id) {
-          console.log("exists")
           exists = true;
           tempCart[i].qty++;
         }
       });
+      //If the product exists, +1 has already been added to qty, so the new cart is assigned to the state.
       if (exists) {
         setCart(tempCart);
       } else {
-        setCart([...cart, { id: id, title: title, qty: 1 }]);
+      //In case the item does not exist, we add the already existing items and the new item to the cart
+        tempCart = [...cart, { id: id, title: title,qty: 1 }];
+        setCart(tempCart);
+        window.localStorage.setItem("cart",JSON.stringify(tempCart));
       }
     }
     return (
