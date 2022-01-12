@@ -8,11 +8,11 @@ import {
   MenuItem,
   Select,
   FormControl,
-  Snackbar
+  Snackbar,
 } from "@mui/material";
-import  MuiAlert from "@mui/material/Alert";
+import MuiAlert from "@mui/material/Alert";
 
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -22,7 +22,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 function ListItems(props) {
   const { cart, setCart } = useContext(CartContext);
   const [open, setOpen] = useState(false);
-  const [lastItem,setLastItem] = useState("");
+  const [lastItem, setLastItem] = useState("");
   //When the value of the select changes we modify cart both in local and in localStorage
   function handleChange(e) {
     let tempArray = [];
@@ -31,9 +31,9 @@ function ListItems(props) {
       //When the element is found, we create the element with the new quantity.
       if (d.id == parseInt(e.target.name)) {
         //If 0 is entered in the select, the item is deleted.
-        if(e.target.value != 0){
+        if (e.target.value != 0) {
           tempArray.push({ id: d.id, title: d.title, qty: e.target.value });
-        }else{
+        } else {
           setLastItem(d.title);
           setOpen(true);
         }
@@ -46,22 +46,20 @@ function ListItems(props) {
     window.localStorage.setItem("cart", JSON.stringify(tempArray));
   }
 
-  function handleDelete(e){
+  function handleDelete(e) {
     let tempArray = [];
-   
+
     cart.map((d) => {
       if (d.id != parseInt(e.target.name)) {
         tempArray.push(d);
-      
-    }else{
-      setLastItem(d.title);
-      setOpen(true);
-    }});
+      } else {
+        setLastItem(d.title);
+        setOpen(true);
+      }
+    });
     //Update state/localStorage
     setCart(tempArray);
     window.localStorage.setItem("cart", JSON.stringify(tempArray));
-    
-
   }
   const cartData = props.data;
   const options = [];
@@ -74,17 +72,16 @@ function ListItems(props) {
     );
   }
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setOpen(false);
   };
-  
+
   return (
     <div className="list-items">
       <h2>Cart</h2>
       {cartData.map((d) => {
-
         return (
           <React.Fragment key={d.id}>
             <Divider />
@@ -92,7 +89,6 @@ function ListItems(props) {
               <img src={d.image} alt={d.title} />
               <div className="cart-item-details">
                 <p>{d.title}</p>
-
                 <FormControl>
                   <InputLabel id="select-label">Qty</InputLabel>
                   <Select
@@ -104,23 +100,32 @@ function ListItems(props) {
                     onChange={handleChange}
                   >
                     {options}
-                  </Select>                  
+                  </Select>
                 </FormControl>
                 <div className="remove-item ">
-                <Button 
-                  variant="outlined" 
-                  color="error" 
-                  size="small" 
-                  name={d.id.toString()} 
-                  onClick={handleDelete} startIcon={<DeleteIcon />}
-                >
-                  Delete
-                </Button>
-                <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                  <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-                    {lastItem.substring(0, 20) + "..."} removed!
-                  </Alert>
-            </Snackbar>
+                  <Button
+                    variant="outlined"
+                    color="error"
+                    size="small"
+                    name={d.id.toString()}
+                    onClick={handleDelete}
+                    startIcon={<DeleteIcon />}
+                  >
+                    Delete
+                  </Button>
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                  >
+                    <Alert
+                      onClose={handleClose}
+                      severity="error"
+                      sx={{ width: "100%" }}
+                    >
+                      {lastItem.substring(0, 20) + "..."} removed!
+                    </Alert>
+                  </Snackbar>
                 </div>
               </div>
             </div>
@@ -133,13 +138,13 @@ function ListItems(props) {
 
 //Subcomponent to show payment related options
 function Payments(props) {
-  const [totalPrice,setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     let tempPrice = 0;
-    props.data.map(e=>tempPrice+=(e.price*e.qty))
-    setTotalPrice(tempPrice)
-  }, [])
+    props.data.map((e) => (tempPrice += e.price * e.qty));
+    setTotalPrice(tempPrice);
+  }, []);
   return (
     <div className="payments">
       <h2>Resume</h2>
@@ -158,9 +163,9 @@ function Payments(props) {
       })}
       <Divider />
       <div className="total-price">
-      <h3>TOTAL : </h3><h3>{totalPrice}</h3>
+        <h3>TOTAL : </h3>
+        <h3>{totalPrice.toFixed(2)}</h3>
       </div>
-      
     </div>
   );
 }
@@ -184,7 +189,7 @@ function Cart() {
       setCartData(tempArray);
     }
     fetchData();
-  }, [cart]);
+  }, [cart,context]);
   return (
     <>
       <div className="cart">
