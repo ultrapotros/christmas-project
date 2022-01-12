@@ -91,8 +91,6 @@ function Payments(props) {
         let warpedTitle = "";
         warpedTitle = e.title.substring(0, 20);
         warpedTitle += "...";
-        console.log(warpedTitle);
-
         return (
           <div className="resume-item" key={e.id}>
             <p>{warpedTitle}</p>
