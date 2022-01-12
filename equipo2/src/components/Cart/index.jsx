@@ -10,6 +10,7 @@ import {
   FormControl,
 } from "@mui/material";
 
+import DeleteIcon from '@mui/icons-material/Delete';
 //Subcomponent to show list of cart items
 function ListItems(props) {
   const { cart, setCart } = useContext(CartContext);
@@ -20,7 +21,10 @@ function ListItems(props) {
     cart.map((d) => {
       //When the element is found, we create the element with the new quantity.
       if (d.id == parseInt(e.target.name)) {
-        tempArray.push({ id: d.id, title: d.title, qty: e.target.value });
+        //If 0 is entered in the select, the item is deleted.
+        if(e.target.value != 0){
+          tempArray.push({ id: d.id, title: d.title, qty: e.target.value });
+        }
       } else {
         tempArray.push(d);
       }
@@ -28,6 +32,24 @@ function ListItems(props) {
     //Update state/localStorage
     setCart(tempArray);
     window.localStorage.setItem("cart", JSON.stringify(tempArray));
+  }
+
+  function handleDelete(e){
+    let tempArray = [];
+    cart.map((d) => {
+      if (d.id == parseInt(e.target.name)) {
+        //If 0 is entered in the select, the item is deleted.
+        if(e.target.value != 0){
+          tempArray.push({ id: d.id, title: d.title, qty: e.target.value });
+        }
+      } else {
+        tempArray.push(d);
+      }
+    });
+    //Update state/localStorage
+    setCart(tempArray);
+    window.localStorage.setItem("cart", JSON.stringify(tempArray));
+
   }
   const cartData = props.data;
   const options = [];
@@ -53,7 +75,6 @@ function ListItems(props) {
 
                 <FormControl>
                   <InputLabel id="select-label">Qty</InputLabel>
-
                   <Select
                     name={d.id.toString()}
                     labelId="select-label"
@@ -63,8 +84,19 @@ function ListItems(props) {
                     onChange={handleChange}
                   >
                     {options}
-                  </Select>
+                  </Select>                  
                 </FormControl>
+                <div className="remove-item ">
+                <Button 
+                  variant="outlined" 
+                  color="error" 
+                  size="small" 
+                  name={d.id.toString()} 
+                  onClick={handleDelete} startIcon={<DeleteIcon />}
+                >
+                  Delete
+                </Button>
+                </div>
               </div>
             </div>
           </React.Fragment>
@@ -118,7 +150,6 @@ function Cart() {
     function fetchData() {
       let tempArray = [];
       context.map((d) => {
-        //TRY FILTER
         cart.map((c) => {
           if (c.id == d.id) {
             tempArray.push({ ...d, qty: c.qty });

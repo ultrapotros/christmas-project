@@ -59,3 +59,7 @@
     display: flex;
     justify-content: space-between;
 }
+
+.remove-item {
+    align-self: flex-end;
+}
