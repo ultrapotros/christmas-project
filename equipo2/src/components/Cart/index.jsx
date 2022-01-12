@@ -9,10 +9,15 @@ import {
   Select,
   FormControl,
   Snackbar,
+  Accordion,
+  AccordionSummary,
+  Typography,
+  AccordionDetails
 } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 
 import DeleteIcon from "@mui/icons-material/Delete";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -146,10 +151,20 @@ function Payments(props) {
     setTotalPrice(tempPrice);
   }, []);
   return (
+    <>
+    
+      
     <div className="payments">
-      <h2>Resume</h2>
-      <Divider />
-      {props.data.map((e) => {
+    <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>Resume</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        {props.data.map((e) => {
         let warpedTitle = "";
         warpedTitle = e.title.substring(0, 20);
         warpedTitle += "...";
@@ -161,12 +176,18 @@ function Payments(props) {
           </div>
         );
       })}
+        </AccordionDetails>
+      
+      <Divider />
+      
+      </Accordion>
       <Divider />
       <div className="total-price">
         <h3>TOTAL : </h3>
         <h3>{totalPrice.toFixed(2)}</h3>
       </div>
     </div>
+    </>
   );
 }
 
