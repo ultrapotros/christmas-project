@@ -32,7 +32,6 @@ function SingleProduct() {
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   };
   //There are times when the component is mounted without the context with data arriving.
@@ -64,7 +63,6 @@ function SingleProduct() {
       }
       setLastItem(title.substring(0, 20) + "...")
       setOpen(true);
-
     }
     return (
       <div className="single-product">
@@ -116,9 +114,9 @@ function SingleProduct() {
               Añadir
             </Button>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-             {lastItem} added to the cart!
-            </Alert>
+              <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                {lastItem} added to the cart!
+              </Alert>
             </Snackbar>
             <Button variant="outlined" color="success">
               Comprar
@@ -133,7 +131,6 @@ function SingleProduct() {
       <>
         <Box sx={{ width: 40 }}>
           <CircularProgress />
-
           <Skeleton animation="wave" />
           <Skeleton animation="wave" />
           <Skeleton animation="wave" />
