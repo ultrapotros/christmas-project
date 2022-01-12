@@ -10,8 +10,14 @@ import {
   Skeleton,
   Box,
   Button,
+  Snackbar
 } from "@mui/material";
+import  MuiAlert from "@mui/material/Alert";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 function SingleProduct() {
   //Retrieve id from the URL
@@ -19,10 +25,17 @@ function SingleProduct() {
   //We take product with id from the URL
   const productData = useContext(Context).filter((d) => d.id == id)[0];
   const { cart, setCart } = useContext(CartContext);
+  const [open, setOpen] = useState(false);
+  const [lastItem,setLastItem] = useState("");
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
   //There are times when the component is mounted without the context with data arriving.
   const isData = productData != undefined;
-
   //We render in case we have data already loaded. In case of no data, circular load is displayed.
   if (isData) {
     const { title, image, price, description, rating } = productData;
@@ -44,9 +57,12 @@ function SingleProduct() {
       } else {
       //In case the item does not exist, we add the already existing items and the new item to the cart
         tempCart = [...cart, { id: id, title: title,qty: 1 }];
+        
         setCart(tempCart);
         window.localStorage.setItem("cart",JSON.stringify(tempCart));
       }
+      setLastItem(title.substring(0, 20) + "...")
+      setOpen(true);
     }
     return (
       <div className="single-product">
@@ -97,6 +113,11 @@ function SingleProduct() {
             >
               Añadir
             </Button>
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                {lastItem} added to the cart!
+              </Alert>
+            </Snackbar>
             <Button variant="outlined" color="success">
               Comprar
             </Button>
@@ -110,7 +131,6 @@ function SingleProduct() {
       <>
         <Box sx={{ width: 40 }}>
           <CircularProgress />
-
           <Skeleton animation="wave" />
           <Skeleton animation="wave" />
           <Skeleton animation="wave" />
