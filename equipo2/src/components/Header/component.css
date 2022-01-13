@@ -1,18 +1,19 @@
-/* .topHeader {
-    display: flex;
-    justify-content:space-between;
-    max-height: 100px;
-    align-items:center;
-    margin-right: 70px;
-} */
-/* .nav {
-    justify-content:space-between;
-    margin: auto;
-} */
-.MuiTabs-flexContainer {
-    justify-content:space-between;
-    margin-right: 50px;
+
+.topHeader {
+    height: 10vh;
 }
-/* .MuiTypography-root {
-    visibility: hidden;
-} */
+.topHeader img {
+    height:100%;
+    max-height: fit-content;
+    object-fit: cover;
+}
+#headerNav {
+    width: 92%;
+    margin: auto;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );
+}
+#headerNav a:focus {
+    border-bottom: 2px solid #1976d2;
+}
