@@ -149,7 +149,7 @@ function Payments(props) {
     let tempPrice = 0;
     props.data.map((e) => (tempPrice += e.price * e.qty));
     setTotalPrice(tempPrice);
-  }, []);
+  }, [props]);
   return (
     <>
     
