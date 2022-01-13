@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header';
+/* import Header from './components/Header'; */
 import HomePage from './components/HomePage';
 import axios from 'axios';
 import React , { useState , useEffect, createContext } from 'react'
@@ -33,7 +33,7 @@ function App() {
     <Router >
     <Context.Provider value={products}>
     <div className="App">
-      <Header /> 
+      {/* <Header />  */}
       <Routes >
         <Route path="/" element={<HomePage />} />
         <Route path="/single-product/:id" element={<h2>SingleProduct</h2>} />

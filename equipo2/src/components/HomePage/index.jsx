@@ -1,43 +1,70 @@
-import * as React from 'react';
-import { useContext } from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+import React, { useState , useContext } from 'react';
 import './component.css';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Context } from '../../App';
-function srcset(image, size, rows = 1, cols = 1) {
-  let col = Math.floor(Math.random() * (5 - 2)) + 1; /* each time we render in a different format */
-  let row = Math.floor(Math.random() * (3 - 1)) + 1;
-  return {
-    src: `${image}?w=${size * cols}&h=${size * rows}&fit=crop&auto=format`,
-    srcSet: `${image}?w=${size * col}&h=${
-      size * row
-    }&fit=crop&auto=format&dpr=2 2x`,
-  };
-}
 
 export default function HomePage() {
-  const contextValue = useContext(Context); /* getting data from context */
-      return (
-    <ImageList className="imagesContainer"
-      sx={{ width: 3/4, height: 4/4 }} /*  giving style to the images container */
-      variant="quilted"
-      cols={4}
-      rowHeight={121}
-      gap={10}
-    >
-      {contextValue.map((item) => ( /* rendering all products */
-        <ImageListItem id="images" key={item.image} cols={1} rows={Math.floor(Math.random() * (3 - 1)) + 1}>
-          <img className="productImages"
-            {...srcset(item.image, 200, item.rows, item.cols)}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
-  );
+  const slides = useContext(Context); /* we get data from context */
+  const [current, setCurrent] = useState(0);
+  const length = slides.length - 1;
+  const nextSlide = () => { /* next arrow function */
+    setCurrent(current === length ? 0 : current + 1);
+  };
+  const prevSlide = () => {/* previous arrow function */
+    setCurrent(current === 0 ? length : current - 1);
+  };
+  let bottomIndex1 = current < 2 ? current + (length - 1): current - 2; /* here we assign values to bottom slider */
+  let bottomIndex2 = current < 1 ? current + (length - 1): current - 1;;
+  let bottomIndex3 = current;
+  let bottomIndex4 = current > length - 1 ? 0 : current + 1;;
+  let bottomIndex5 = current > length - 2 ? current - (length - 1): current + 2;;
+  if (!Array.isArray(slides) || slides.length <= 0) {
+    return null;
+  }
 
-}
+  return (
+    <>
+      <ArrowBackIosIcon className='left-arrow' onClick={prevSlide} />
+      <ArrowForwardIosIcon className='right-arrow' onClick={nextSlide} />    
+      <section className='slider'>
+        <div className= 'main-image'>
+            {slides.map((slide, index) => {
+              return (
+                  <div className={index === current ? 'slide active' : 'slide'} key={index}>
+                    {/* here we assigned the class active to the image to show */}
+                    {index === current && (
+                      <img src={slide.image} alt={slide.description} className='image' />
+                    )}
+                  </div>
+              );
+            })}        
+        </div>
+          <div className= 'bottom-line'> {/* bottom slider */}
+                <div className= 'bottom-line-image'>
+                    <img src={slides[bottomIndex1].image} alt={slides[bottomIndex1].description}/>
+                </div>
+                <div className= 'bottom-line-image'>
+                    <img src={slides[bottomIndex2].image} alt={slides[bottomIndex2].description}/>
+                </div>
+                <div className= 'bottom-line-image main'>
+                    <img src={slides[bottomIndex3].image} alt={slides[bottomIndex3].description}/>
+                </div>
+                <div className= 'bottom-line-image'>
+                    <img src={slides[bottomIndex4].image} alt={slides[bottomIndex4].description}/>
+                </div>
+                <div className= 'bottom-line-image'>
+                    <img src={slides[bottomIndex5].image} alt={slides[bottomIndex5].description}/>
+                </div>
+          </div>    
+      </section>    
+    </>
+
+  );
+};
+
+
+
 
 
 
