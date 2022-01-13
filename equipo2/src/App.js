@@ -3,6 +3,8 @@ import './App.css';
 import Header from './components/Header';
 import SingleCategory from './components/SingleCategory';
 import SingleProduct from './components/SingleProduct';
+import Cart from './components/Cart';
+import Privacy from './components/Privacy'
 import axios from 'axios';
 import React , { useState , useEffect, createContext } from 'react'
 import {
@@ -26,27 +28,36 @@ function App() {
         console.log(err);
       }
     }
+    //We check for a cart in localStorage
+    function checkCart(){
+      let cartLocal = JSON.parse(window.localStorage.getItem("cart"));
+      if(cartLocal!=null){
+        setCart(cartLocal);
+      }
+    }
     fetchApi();
+    checkCart();
   }, []);
 
   return (
     <Router >
-      <CartContext.Provider value={{ cart, setCart }}>
-        <Context.Provider value={products}>
-          <div className="App">
-            <Header /> 
-            <Routes >
-              <Route path="/" element={<h2>HomePage</h2>} />
-              <Route path="/single-category/:cat" element={<SingleCategory />} />
-              <Route path="/single-product/:id" element={<SingleProduct />} />
-              <Route path="/cart" element={<h2>Cart</h2>} />
-              <Route path="/about-us" element={<h2>About us</h2>} />
-            </Routes>
-            {/* <Footer /> */}
-          </div>
-        </Context.Provider>
-      </CartContext.Provider>
-    </Router>
+         <CartContext.Provider value={{ cart, setCart }}>
+           <Context.Provider value={products}>
+            <div className="App">
+              <Header />
+              <Routes >
+                <Route path="/" element={<h2>HomePage</h2>} />
+                <Route path="/single-category/:cat" element={<SingleCategory />} />
+                <Route path="/single-product/:id" element={<SingleProduct />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/about-us" element={<h2>About us</h2>} />
+                <Route path="/privacy-policy" element={<Privacy />} />
+               </Routes>
+               {/* <Footer /> */}
+            </div>
+            </Context.Provider>
+        </CartContext.Provider>
+</Router>
   );
 }
 
