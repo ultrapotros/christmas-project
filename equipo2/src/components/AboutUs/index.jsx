@@ -1,11 +1,7 @@
 
 import './component.css';
 import React from 'react'
-import GoogleMapReact from 'google-map-react';
-
 import Map from './map'
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export default function AboutUs() {
     const defaultProps = {
@@ -14,7 +10,13 @@ export default function AboutUs() {
           lng: -3.6926647309547094
         },
         zoom: 11
-      };
+    };
+
+    /* const containerStyle = {
+        position: 'relative',  
+        width: '80%',
+        height: '80%'
+    } */
 
     return (
         <div className='AboutUs'>
@@ -27,9 +29,9 @@ export default function AboutUs() {
                     You can find us if you have no debts or complaints at:
                 </p>
             </div>
-            <div className="map-container">
+            {/* <div className="map-container"> */}
                 <Map />
-            </div>
+            {/* </div> */}
         </div>
     )
 }

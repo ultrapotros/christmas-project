@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import {Map, GoogleApiWrapper} from 'google-maps-react';
+import {Map, GoogleApiWrapper, Marker} from 'google-maps-react';
 
 export class MapContainer extends Component {
     
@@ -16,14 +16,20 @@ export class MapContainer extends Component {
     render() {
         return (
         <Map 
-            google={this.props.google} 
-            zoom={18}
-            initialCenter={this.state.position}
+            google = {this.props.google} 
+            style = {{width: '50%', height: '50%', position: 'relative'}}
+            zoom = {18}
+            initialCenter = {this.state.position}
             >
+                <Marker
+                    title = {'waiting for agreement on 404.'}
+                    name = {'Equipo2'}
+                    position = {this.state.position} />
         </Map>
         );
     }
 }
 
 
-export default GoogleApiWrapper({apiKey: ("AIzaSyDsGEzmdf-D0CWhqdW-sZ_uBw6K8XKgd9s")})(MapContainer)
+export default GoogleApiWrapper({
+    apiKey: ("AIzaSyDsGEzmdf-D0CWhqdW-sZ_uBw6K8XKgd9s")})(MapContainer)
