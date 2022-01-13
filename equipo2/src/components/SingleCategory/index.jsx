@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import { CircularProgress, Skeleton, Box } from '@mui/material';
 
 
 export default function SingleCategory() {
@@ -20,6 +21,7 @@ export default function SingleCategory() {
   const { cat } = useParams();
   const [categoryItems, setCategoryItems] = useState([]);
   const [orderBy, setOrderBy] = useState();
+  const isData = itemData.length !== 0;
 
   useEffect(() => {}, [orderBy]);
 
@@ -107,15 +109,8 @@ export default function SingleCategory() {
           <ImageListItem id='ImageListItem' key={item.image} 
               to={`/single-product/${item.id}`} 
               component={Link}
-              sx={{display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                alignItems: 'stretch',
-                height: '300px',
-              }}
               >
             <img
-              //src={item.image}
               src={`${item.image}?w=248&fit=crop&auto=format`}
               srcSet={`${item.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
               alt={item.title}
@@ -135,11 +130,29 @@ export default function SingleCategory() {
     );
   }
 
-  return (<div id='SingleCategory'>
-      <BasicButtonGroup />
-      <TitlebarBelowImageList />
-    </div>
-  );
+  if(isData){
+    // We make sure that the information filtered by category is loaded
+    if (categoryItems.length === 0) {
+      setCategoryItems(itemData.filter(item => item.category === cat));
+    }
+
+    return (<div id='SingleCategory'>
+        <BasicButtonGroup />
+        <TitlebarBelowImageList />
+      </div>
+    );
+  } else {
+    // Structure while loading data
+    return( <>
+      <Box sx={{ width: 40 }}>
+        <CircularProgress />
+      
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+      </Box>
+    </>)
+  }
 }
 
 
