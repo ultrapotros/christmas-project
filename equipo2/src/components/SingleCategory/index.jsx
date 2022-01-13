@@ -1,4 +1,5 @@
 
+import './component.css';
 import { Context } from "../../App.js";
 import React , { useState , useEffect, useContext } from 'react'
 import { useParams, Link } from 'react-router-dom';
@@ -27,24 +28,6 @@ export default function SingleCategory() {
     setOrderBy('null');
   }, [cat]);
 
-  /**
-   * function for sorting elements
-   * @arguments objectProp=string, order=string;
-   */
-  function sortElements(objectProp, order){
-    switch (objectProp) {
-      case 'price':
-        if(order === 'ascen') {
-          categoryItems.sort((a,b) => (a[objectProp] > b[objectProp]) ? -1 : ((b[objectProp] > a[objectProp]) ? 1 : 0));   
-        } else {
-          categoryItems.sort((a,b) => (a[objectProp] > b[objectProp]) ? 1 : ((b[objectProp] > a[objectProp]) ? -1 : 0));
-        }
-        break;
-      case 'rate':
-        categoryItems.sort((a,b) => (a.rating[objectProp] > b.rating[objectProp]) ? -1 : ((b.rating[objectProp] > a.rating[objectProp]) ? 1 : 0));  
-        break; 
-    }
-  }
 
   /**
    * component to show the different types of ordering for the products
@@ -52,55 +35,85 @@ export default function SingleCategory() {
    */
   function BasicButtonGroup() {
     return (
-      <FormControl component="fieldset">
-        <FormLabel component="legend" sx={{ color:'#1976d2' }}>Ordenado por</FormLabel>
+      <FormControl component="fieldset"
+        sx={{ display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'center',  
+          color: '#1976d2'}}
+        > Order by 
+        <FormLabel component="legend"></FormLabel>
         <ButtonGroup variant="text" aria-label="outlined primary button group">
           <Button onClick={() => {
-            sortElements('price', 'ascen');
-            //categoryItems.sort((a,b) => (a.price > b.price) ? -1 : ((b.price > a.price) ? 1 : 0)); 
+            categoryItems.sort((a,b) => {if (a.price > b.price) {
+                return -1; 
+              } else if (b.price > a.price) {
+                return 1;
+              } else {
+                return 0;
+              }
+            });
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('maxPrice');
           }}>
-           Precio creciente </Button>
+           Increasing price </Button>
           <Button onClick={() => {
-            sortElements('price', 'descen');
-            //categoryItems.sort((a,b) => (a.price > b.price) ? 1 : ((b.price > a.price) ? -1 : 0));
+            categoryItems.sort((a,b) => {if (a.price > b.price) {
+              return 1; 
+            } else if (b.price > a.price) {
+              return -1;
+            } else {
+              return 0;
+            }
+          });
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('minPrice');
           }}>
-            Precio decreciente </Button>
+            Decreasing price </Button>
           <Button onClick={() => {
-            sortElements('rate', 'ascen');
-            //categoryItems.sort((a,b) => (a.rating.rate > b.rating.rate) ? -1 : ((b.rating.rate > a.rating.rate) ? 1 : 0)); 
+            categoryItems.sort((a,b) => {if (a.rating.rate > b.rating.rate) {
+                return -1; 
+              } else if (b.rating.rate > a.rating.rate) {
+                return 1;
+              } else {
+                return 0;
+              }
+            });
             //We use the state of orderBy to force rendering, as it is not triggered by Mutable.
             setOrderBy('rating');
           }}>
-            Mejor valorado </Button>
+            Best rated </Button>
         </ButtonGroup>
       </FormControl>
     );
   }
+
 
   /**
    * Component to display the products
    * @returns component react
    */
   function TitlebarBelowImageList() {
-    //const itemData = props.itemData;
-    //sx={{ width: 500 , height: 450 }}  sx={{ width: 500 , m: 2, p: 15 }}  
-    //console.log(categoryItems);
     return (
-      <ImageList sx={{ margin: '5%',
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        minWidth:'45%', maxWidth:'65%' }}>
+      <ImageList
+        sx={{p: '15px',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          alignItems: 'stretch',
+          //width: '600px',
+        }}
+        >
         {categoryItems.map((item) => (
           <ImageListItem key={item.image} 
               to={`/single-product/${item.id}`} 
               component={Link}
-              sx={{ minWidth:'25%', maxWidth:'45%' }}
+              sx={{display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'stretch',
+                height: '300px',
+              }}
               >
             <img
               src={`${item.image}?w=248&fit=crop&auto=format`}
@@ -111,7 +124,7 @@ export default function SingleCategory() {
             <ImageListItemBar
               title={item.title}
               subtitle={<>
-                <p>Precio: {item.price} € </p>
+                <p>Price: {item.price} € </p>
                 <Rating name={item.title} value={item.rating.rate} precision={0.1} readOnly />
                 </>} 
               position="below"
