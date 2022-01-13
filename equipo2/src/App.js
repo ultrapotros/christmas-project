@@ -4,6 +4,7 @@ import TabsRouter from './components/Header';
 import SingleCategory from './components/SingleCategory';
 import SingleProduct from './components/SingleProduct';
 import Cart from './components/Cart';
+import Privacy from './components/Privacy'
 import axios from 'axios';
 import React , { useState , useEffect, createContext } from 'react'
 import {
@@ -54,6 +55,7 @@ function App() {
         <Route path="/single-product/:id" element={<SingleProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/about-us" element={<h2>About us</h2>} />
+        <Route path="/privacy-policy" element={<Privacy />} />
        </Routes>
        {/* <Footer /> */}
 
