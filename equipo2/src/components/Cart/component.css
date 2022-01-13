@@ -31,10 +31,11 @@
 }
 
 .payments {
-    margin-left: 15px;
+    margin-left: 150px;
     display: flex;
     flex-flow: column;
     width: 30%;
+    margin-top: 80px;
 }
 
 .resume-item {
@@ -58,4 +59,8 @@
 .total-price {
     display: flex;
     justify-content: space-between;
+}
+
+.remove-item {
+    align-self: flex-end;
 }
