@@ -21,7 +21,6 @@ export default function SingleCategory() {
   const { cat } = useParams();
   const [categoryItems, setCategoryItems] = useState([]);
   const [orderBy, setOrderBy] = useState();
-  const isData = itemData.length !== 0;
 
   useEffect(() => {}, [orderBy]);
 
@@ -130,7 +129,7 @@ export default function SingleCategory() {
     );
   }
 
-  if(isData){
+  if (itemData.length !== 0) {
     // We make sure that the information filtered by category is loaded
     if (categoryItems.length === 0) {
       setCategoryItems(itemData.filter(item => item.category === cat));
@@ -141,6 +140,7 @@ export default function SingleCategory() {
         <TitlebarBelowImageList />
       </div>
     );
+
   } else {
     // Structure while loading data
     return( <>
@@ -151,7 +151,7 @@ export default function SingleCategory() {
         <Skeleton animation="wave" />
         <Skeleton animation="wave" />
       </Box>
-    </>)
+    </>);
   }
 }
 
