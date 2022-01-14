@@ -12,6 +12,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import { CircularProgress, Skeleton, Box } from '@mui/material';
 
 
 export default function SingleCategory() {
@@ -46,9 +47,9 @@ export default function SingleCategory() {
         <ButtonGroup variant="text" aria-label="outlined primary button group">
           <Button onClick={() => {
             categoryItems.sort((a,b) => {if (a.price > b.price) {
-                return -1; 
+                return 1; 
               } else if (b.price > a.price) {
-                return 1;
+                return -1;
               } else {
                 return 0;
               }
@@ -59,9 +60,9 @@ export default function SingleCategory() {
            Increasing price </Button>
           <Button onClick={() => {
             categoryItems.sort((a,b) => {if (a.price > b.price) {
-              return 1; 
+              return -1; 
             } else if (b.price > a.price) {
-              return -1;
+              return 1;
             } else {
               return 0;
             }
@@ -101,19 +102,12 @@ export default function SingleCategory() {
           flexWrap: 'wrap',
           justifyContent: 'center',
           alignItems: 'stretch',
-          //width: '600px',
         }}
         >
         {categoryItems.map((item) => (
-          <ImageListItem key={item.image} 
+          <ImageListItem id='ImageListItem' key={item.image} 
               to={`/single-product/${item.id}`} 
               component={Link}
-              sx={{display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                alignItems: 'stretch',
-                height: '300px',
-              }}
               >
             <img
               src={`${item.image}?w=248&fit=crop&auto=format`}
@@ -135,11 +129,30 @@ export default function SingleCategory() {
     );
   }
 
-  return (<div className='SingleCategory'>
-      <BasicButtonGroup />
-      <TitlebarBelowImageList />
-    </div>
-  );
+  if (itemData.length !== 0) {
+    // We make sure that the information filtered by category is loaded
+    if (categoryItems.length === 0) {
+      setCategoryItems(itemData.filter(item => item.category === cat));
+    }
+
+    return (<div id='SingleCategory'>
+        <BasicButtonGroup />
+        <TitlebarBelowImageList />
+      </div>
+    );
+
+  } else {
+    // Structure while loading data
+    return( <>
+      <Box sx={{ width: 40 }}>
+        <CircularProgress />
+      
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+      </Box>
+    </>);
+  }
 }
 
 
