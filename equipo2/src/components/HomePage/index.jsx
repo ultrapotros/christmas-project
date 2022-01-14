@@ -28,38 +28,37 @@ export default function HomePage() {
       <ArrowBackIosIcon className='left-arrow' onClick={prevSlide} />
       <ArrowForwardIosIcon className='right-arrow' onClick={nextSlide} />    
       <section className='slider'>
-        <div className= 'main-image'>
-            {slides.map((slide, index) => {
-              return (
-                  <div className={index === current ? 'slide active' : 'slide'} key={index}>
-                    {/* here we assigned the class active to the image to show */}
-                    {index === current && (
-                      <img src={slide.image} alt={slide.description} className='image' />
-                    )}
-                  </div>
-              );
-            })}        
-        </div>
+          <div className= 'main-image'>
+              {slides.map((slide, index) => {
+                return (
+                    <div className={index === current ? 'slide active' : 'slide'} key={index}>
+                      {/* here we assigned the class active to the image to show */}
+                      {index === current && (
+                        <img src={slide.image} alt={slide.description} className='image' />
+                      )}
+                    </div>
+                );
+              })}        
+          </div>
           <div className= 'bottom-line'> {/* bottom slider */}
-                <div className= 'bottom-line-image'>
-                    <img src={slides[bottomIndex1].image} alt={slides[bottomIndex1].description}/>
-                </div>
-                <div className= 'bottom-line-image'>
-                    <img src={slides[bottomIndex2].image} alt={slides[bottomIndex2].description}/>
-                </div>
-                <div className= 'bottom-line-image main'>
-                    <img src={slides[bottomIndex3].image} alt={slides[bottomIndex3].description}/>
-                </div>
-                <div className= 'bottom-line-image'>
-                    <img src={slides[bottomIndex4].image} alt={slides[bottomIndex4].description}/>
-                </div>
-                <div className= 'bottom-line-image'>
-                    <img src={slides[bottomIndex5].image} alt={slides[bottomIndex5].description}/>
-                </div>
+              <div className= 'bottom-line-image'>
+                  <img src={slides[bottomIndex1].image} alt={slides[bottomIndex1].description}/>
+              </div>
+              <div className= 'bottom-line-image'>
+                  <img src={slides[bottomIndex2].image} alt={slides[bottomIndex2].description}/>
+              </div>
+              <div className= 'bottom-line-image main'>
+                  <img src={slides[bottomIndex3].image} alt={slides[bottomIndex3].description}/>
+              </div>
+              <div className= 'bottom-line-image'>
+                  <img src={slides[bottomIndex4].image} alt={slides[bottomIndex4].description}/>
+              </div>
+              <div className= 'bottom-line-image'>
+                  <img src={slides[bottomIndex5].image} alt={slides[bottomIndex5].description}/>
+              </div>
           </div>    
       </section>    
     </>
-
   );
 };
 
