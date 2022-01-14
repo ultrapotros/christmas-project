@@ -4,13 +4,13 @@ import React from 'react'
 import Map from './map'
 
 export default function AboutUs() {
-    const defaultProps = {
+    /* const defaultProps = {
         center: {
           lat: 40.421779006268075,
           lng: -3.6926647309547094
         },
         zoom: 11
-    };
+    }; */
 
     /* const containerStyle = {
         position: 'relative',  
