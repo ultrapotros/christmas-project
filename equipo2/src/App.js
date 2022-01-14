@@ -55,7 +55,6 @@ function App() {
         <Route path="/privacy-policy" element={<Privacy />} />
        </Routes>
        <Footer /> 
-
     </div>
     </Context.Provider>
 </CartContext.Provider>

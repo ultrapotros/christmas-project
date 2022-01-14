@@ -12,14 +12,15 @@ import {  Link } from "react-router-dom";
 //these links open in the same page, as header links
 function MyTabs() {
   const routes = [{route:'/about-us', label: 'about-us'}, {route:"/faq", label: "faq"},
-   {route:"/privacy", label: "privacy policy"}];
-  return (<React.Fragment>
+   {route:"/privacy-policy", label: "privacy policy"}];
+  return (
+  <React.Fragment>
       <Tabs value={0}>
         <div  id= "nav">{/* id added to give our own style */}
-          {routes.map((element, index) => <Tab label={element.label} key={`category${index}`} value={element.route} to={element.route} component={Link} />)}
+          {routes.map((element, index) => <Tab label={element.label} key={`category${index}`} 
+          value={element.route} to={element.route} component={Link} />)}
         </div>
       </Tabs> 
-      
   </React.Fragment>
   );
 }
@@ -31,15 +32,13 @@ function SocialMedia() {
   return (<React.Fragment>
       <Tabs value={0}>
         <div  id= "social"> {/* id added to give our own style */}
-          {routes.map((element, index) => <a key={`category${index}`} href={element.route} target ='_blank' component={Link}>{element.label}</a>)}
+          {routes.map((element, index) => <a key={`category${index}`} href={element.route} target ='_blank' 
+          component={Link}>{element.label}</a>)}
         </div>
       </Tabs> 
-      
   </React.Fragment>
   );
 }
-
-
 
 export default function Footer() {
   return (<div className="footerContainer">
