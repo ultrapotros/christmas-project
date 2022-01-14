@@ -29,9 +29,9 @@ export default function AboutUs() {
                     You can find us if you have no debts or complaints at:
                 </p>
             </div>
-            {/* <div className="map-container"> */}
-                <Map />
-            {/* </div> */}
+            <div id="map-container">
+                <Map containerStyle = {{position:'static',  width:'80%', height:'80%'}}/>
+            </div>
         </div>
     )
 }
