@@ -18,6 +18,7 @@ import MuiAlert from "@mui/material/Alert";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
 import { Link } from "react-router-dom";
 
@@ -224,7 +225,10 @@ function Cart() {
             <Payments data={cartData} />
           </>
         ) : (
-          <h2>Cart is empty!</h2>
+          <div className="empty-cart">
+            <RemoveShoppingCartIcon color="disabled"  sx={{ fontSize: 250 }} />
+            <h2>Cart is empty!</h2>
+          </div>
         )}
       </div>
     </>
