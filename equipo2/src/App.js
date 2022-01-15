@@ -1,6 +1,6 @@
 
 import './App.css';
-import Header from './components/Header';
+/* import Header from './components/Header'; */
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import SingleCategory from './components/SingleCategory';
@@ -45,7 +45,7 @@ function App() {
     <CartContext.Provider value={{ cart, setCart }}>
     <Context.Provider value={products}>
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Routes >
         <Route path="/" element={<HomePage />} />
         <Route path="/single-category/:cat" element={<SingleCategory />} />
