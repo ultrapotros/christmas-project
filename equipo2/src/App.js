@@ -1,7 +1,7 @@
 
 import './App.css';
 /* import Header from './components/Header'; */
-import HomePage from './components/HomePage';
+/* import HomePage from './components/HomePage'; */
 import Footer from './components/Footer';
 import SingleCategory from './components/SingleCategory';
 import SingleProduct from './components/SingleProduct';
@@ -47,7 +47,7 @@ function App() {
     <div className="App">
       {/* <Header /> */}
       <Routes >
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<h2>HomePage</h2>} />
         <Route path="/single-category/:cat" element={<SingleCategory />} />
         <Route path="/single-product/:id" element={<SingleProduct />} />
         <Route path="/cart" element={<Cart />} />
