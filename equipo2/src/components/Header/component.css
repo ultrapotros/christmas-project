@@ -1,18 +1,64 @@
-/* .topHeader {
-    display: flex;
-    justify-content:space-between;
-    max-height: 100px;
-    align-items:center;
-    margin-right: 70px;
-} */
-/* .nav {
-    justify-content:space-between;
+
+.header {
+    width: 95%;
     margin: auto;
-} */
-.MuiTabs-flexContainer {
-    justify-content:space-between;
-    margin-right: 50px;
 }
-/* .MuiTypography-root {
-    visibility: hidden;
-} */
+
+.topHeader {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+.topHeader img {
+    height:100%;
+    max-height: fit-content;
+    object-fit: cover;
+}
+#headerNav {
+    width: 100%;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: repeat( 7, 1fr);
+    align-items: center;
+}
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: #23394d;
+}
+#headerNav a:hover {
+    border-bottom: 3px solid #1976d2;
+}
+.mobileIcon {
+  display: none;
+}
+@media screen and (max-width: 860px) { /* this media query allows us to change the top bar to a lateral one*/
+  .showed {
+     transform: translateX(100%) ; /* this class hide the lateral nav*/
+  }
+  #headerNav {
+      background-color: #23394d;
+      position: absolute;
+      top: 25vh;
+      width: 80%;
+      height: 50vh;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      row-gap: 2vh;
+      align-items: center;
+      left: -100%;
+      transition: 0.5s all ease;   
+      z-index: 1;
+      border-radius: 10px;
+  }
+  a {
+    color: rgb(235, 176, 50);
+  }
+  .mobileIcon { 
+    display: block;
+    cursor: pointer;
+  }
+}
+  
