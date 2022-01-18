@@ -192,6 +192,8 @@ function Payments(props) {
         <h3>TOTAL : </h3>
         <h3>{totalPrice.toFixed(2)}€</h3>
       </div>
+
+      <Purchase />
     </div>
     </>
   );
@@ -208,7 +210,7 @@ function Cart() {
       let tempArray = [];
       context.map((d) => {
         cart.map((c) => {
-          if (c.id === d.id) {
+          if (parseInt(c.id) === d.id) {
             tempArray.push({ ...d, qty: c.qty });
           }
         });
@@ -237,18 +239,22 @@ function Cart() {
 }
 
 function Purchase() {
-  return (<>
-    <Button
-        variant="contained"
-        /* color="error" */
-        size="medium"
-        name="Purchase"
-        /* onClick={handlePurchase} */
-        startIcon={<MonetizationOnIcon />}
-      >
-        Purchase
-      </Button>
-    </>
+  const { setCart } = useContext(CartContext);
+  return (
+    <div className="purchase">
+      <Button
+          variant="contained"
+          size="large"
+          name="Purchase"
+          onClick={() =>{
+            setCart([]);
+            window.localStorage.setItem("cart", JSON.stringify([]));
+          }}
+          startIcon={<MonetizationOnIcon />}
+        >
+          Purchase
+        </Button>
+    </div>
   ); 
 }
 
