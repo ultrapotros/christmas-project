@@ -17,6 +17,7 @@ import {
 import MuiAlert from "@mui/material/Alert";
 
 import DeleteIcon from "@mui/icons-material/Delete";
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
@@ -37,9 +38,9 @@ function ListItems(props) {
     //We retrieve the id from the select's name property
     cart.map((d) => {
       //When the element is found, we create the element with the new quantity.
-      if (d.id == parseInt(e.target.name)) {
+      if (d.id === parseInt(e.target.name)) {
         //If 0 is entered in the select, the item is deleted.
-        if (e.target.value != 0) {
+        if (e.target.value !== 0) {
           tempArray.push({ id: d.id, title: d.title, qty: e.target.value });
         } else {
           setLastItem(d.title);
@@ -58,7 +59,7 @@ function ListItems(props) {
     let tempArray = [];
 
     cart.map((d) => {
-      if (d.id != parseInt(e.target.name)) {
+      if (d.id !== parseInt(e.target.name)) {
         tempArray.push(d);
       } else {
         setLastItem(d.title);
@@ -207,7 +208,7 @@ function Cart() {
       let tempArray = [];
       context.map((d) => {
         cart.map((c) => {
-          if (c.id == d.id) {
+          if (c.id === d.id) {
             tempArray.push({ ...d, qty: c.qty });
           }
         });
@@ -238,12 +239,12 @@ function Cart() {
 function Purchase() {
   return (<>
     <Button
-        variant="outlined"
-        color="error"
-        size="small"
+        variant="contained"
+        /* color="error" */
+        size="medium"
         name="Purchase"
         /* onClick={handlePurchase} */
-        startIcon={<DeleteIcon />}
+        startIcon={<MonetizationOnIcon />}
       >
         Purchase
       </Button>
