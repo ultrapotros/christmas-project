@@ -32,10 +32,7 @@
 .mobileIcon {
   display: none;
 }
-.active {
-  background-color: #23394d;
-  color:rgb(235, 176, 50);
-}
+
 @media screen and (max-width: 860px) { /* this media query allows us to change the top bar to a lateral one*/
   .showed {
      transform: translateX(100%) ; /* this class hide the lateral nav*/
