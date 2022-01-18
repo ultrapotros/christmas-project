@@ -19,16 +19,16 @@ export default function AboutUs() {
                     You can find us if you have no debts or complaints at:
                 </p>
             </div>
-            <div class="gmap_canvas">
+            <div className="gmap_canvas">
                 <iframe title='gmap' 
                     width="600" 
                     height="500" 
                     id="gmap_canvas" 
                     src={mapSrc}
-                    frameborder="0" 
+                    frameBorder="0" 
                     scrolling="no" 
-                    marginheight="0" 
-                    marginwidth="0">
+                    marginHeight="0" 
+                    marginWidth="0">
                 </iframe>
             </div>
         </div>
