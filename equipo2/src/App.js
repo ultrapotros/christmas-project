@@ -1,11 +1,4 @@
 
-import './App.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import SingleCategory from './components/SingleCategory';
-import SingleProduct from './components/SingleProduct';
-import Cart from './components/Cart';
-import Privacy from './components/Privacy'
 import axios from 'axios';
 import React , { useState , useEffect, createContext } from 'react'
 import {
@@ -13,6 +6,17 @@ import {
   Routes,
   Route,
   } from "react-router-dom";
+
+import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import SingleCategory from './components/SingleCategory';
+import SingleProduct from './components/SingleProduct';
+import Cart from './components/Cart';
+import Privacy from './components/Privacy';
+import NotFoundPage from './components/NotFoundPage';
+  
+
 export const Context = createContext(null);
 export const CartContext = createContext(null);
 
@@ -51,6 +55,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/about-us" element={<h2>About us</h2>} />
                 <Route path="/privacy-policy" element={<Privacy />} />
+                <Route path="*" element={<NotFoundPage />} />
                </Routes>
                <Footer /> 
             </div>
