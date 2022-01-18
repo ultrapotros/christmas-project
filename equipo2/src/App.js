@@ -1,5 +1,6 @@
 
 import './App.css';
+import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import SingleCategory from './components/SingleCategory';
@@ -15,7 +16,6 @@ import {
   } from "react-router-dom";
 export const Context = createContext(null);
 export const CartContext = createContext(null);
-
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
@@ -38,6 +38,7 @@ function App() {
     fetchApi();
     checkCart();
   }, []);
+
   return (
     <Router >
          <CartContext.Provider value={{ cart, setCart }}>
@@ -45,7 +46,7 @@ function App() {
             <div className="App">
               <Header />
               <Routes >
-                <Route path="/" element={<h2>HomePage</h2>} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/single-category/:cat" element={<SingleCategory />} />
                 <Route path="/single-product/:id" element={<SingleProduct />} />
                 <Route path="/cart" element={<Cart />} />
@@ -59,5 +60,6 @@ function App() {
 </Router>
   );
 }
+
 
 export default App;
