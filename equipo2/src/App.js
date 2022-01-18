@@ -20,11 +20,13 @@ import Privacy from './components/Privacy'
 
 export const Context = createContext(null);
 export const CartContext = createContext(null);
+export const RatingContext = createContext(null);
 
 
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [rating,setRating] = useState([]);
   
   useEffect(() => {
     async function fetchApi() {
@@ -42,6 +44,13 @@ function App() {
         setCart(cartLocal);
       }
     }
+    //We check for ratings in localStorage
+    function checkRating(){
+      let ratingLocal = JSON.parse(window.localStorage.getItem("rating"));
+      if(ratingLocal!=null){
+        setRating(ratingLocal);
+      }
+    }
     fetchApi();
     checkCart();
   }, []);
@@ -55,7 +64,12 @@ function App() {
             <Routes >
               <Route path="/" element={<HomePage />} />
               <Route path="/single-category/:cat" element={<SingleCategory />} />
-              <Route path="/single-product/:id" element={<SingleProduct />} />
+              <Route path="/single-product/:id" 
+                element={
+                  <RatingContext.Provider value={rating}>
+                    <SingleProduct />
+                  </RatingContext.Provider>} 
+              />
               <Route path="/cart" element={<Cart />} />
               <Route path="/about-us" element={<AboutUs/>} />
               <Route path="/privacy-policy" element={<Privacy />} />
