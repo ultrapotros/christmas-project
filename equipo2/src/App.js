@@ -25,6 +25,7 @@ export const CartContext = createContext(null);
 function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
+  
   useEffect(() => {
     async function fetchApi() {
       try {
