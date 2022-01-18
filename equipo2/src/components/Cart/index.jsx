@@ -18,6 +18,9 @@ import MuiAlert from "@mui/material/Alert";
 
 import DeleteIcon from "@mui/icons-material/Delete";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+
+import { Link } from "react-router-dom";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -93,7 +96,9 @@ function ListItems(props) {
             <div className="cart-item">
               <img src={d.image} alt={d.title} />
               <div className="cart-item-details">
+                <Link to={`/single-product/${d.id}"`} >
                 <p>{d.title}</p>
+                </Link>
                 <FormControl>
                   <InputLabel id="select-label">Qty</InputLabel>
                   <Select
@@ -172,7 +177,7 @@ function Payments(props) {
           <div className="resume-item" key={e.id}>
             <p>{warpedTitle}</p>
             <p className="resume-qty"> x {e.qty}</p>
-            <p className="resume-price">{e.price * e.qty}</p>
+            <p className="resume-price">{e.price * e.qty}€</p>
           </div>
         );
       })}
@@ -184,7 +189,7 @@ function Payments(props) {
       <Divider />
       <div className="total-price">
         <h3>TOTAL : </h3>
-        <h3>{totalPrice.toFixed(2)}</h3>
+        <h3>{totalPrice.toFixed(2)}€</h3>
       </div>
     </div>
     </>
@@ -220,7 +225,10 @@ function Cart() {
             <Payments data={cartData} />
           </>
         ) : (
-          <p>Cart is empty!</p>
+          <div className="empty-cart">
+            <RemoveShoppingCartIcon color="disabled"  sx={{ fontSize: 250 }} />
+            <h2>Cart is empty!</h2>
+          </div>
         )}
       </div>
     </>
