@@ -6,6 +6,8 @@
 
 #ImageListItem{
     margin: 2%;
+    height: 850px;
+    width: 550px;
 }
 
 #ImageListItem > img {
