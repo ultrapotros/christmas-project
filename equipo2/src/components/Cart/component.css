@@ -64,3 +64,11 @@
 .remove-item {
     align-self: flex-end;
 }
+
+.empty-cart {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 100px;
+}

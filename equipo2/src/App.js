@@ -7,6 +7,7 @@ import {
   Route,
   } from "react-router-dom";
 
+
 import './App.css';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
@@ -16,7 +17,8 @@ import SingleProduct from './components/SingleProduct';
 import Cart from './components/Cart';
 import Privacy from './components/Privacy';
 import NotFoundPage from './components/NotFoundPage';
-  
+import AboutUs from './components/AboutUs';
+
 
 export const Context = createContext(null);
 export const CartContext = createContext(null);
@@ -57,7 +59,7 @@ function App() {
               <Route path="/single-category/:cat" element={<SingleCategory />} />
               <Route path="/single-product/:id" element={<SingleProduct />} />
               <Route path="/cart" element={<Cart />} />
-              <Route path="/about-us" element={<h2>About us</h2>} />
+			  <Route path="/about-us" element={<AboutUs/>} />
               <Route path="/privacy-policy" element={<Privacy />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
@@ -65,7 +67,7 @@ function App() {
           </div>
         </Context.Provider>
       </CartContext.Provider>
-	  </Router>
+    </Router>
   );
 }
 
