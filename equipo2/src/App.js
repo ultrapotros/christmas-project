@@ -1,12 +1,4 @@
 
-import './App.css';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import SingleCategory from './components/SingleCategory';
-import SingleProduct from './components/SingleProduct';
-import AboutUs from './components/AboutUs';
-import Cart from './components/Cart';
-import Privacy from './components/Privacy'
 import axios from 'axios';
 import React , { useState , useEffect, createContext } from 'react'
 import {
@@ -14,8 +6,21 @@ import {
   Routes,
   Route,
   } from "react-router-dom";
+  
+import './App.css';
+import HomePage from './components/HomePage';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import SingleCategory from './components/SingleCategory';
+import SingleProduct from './components/SingleProduct';
+import AboutUs from './components/AboutUs';
+import Cart from './components/Cart';
+import Privacy from './components/Privacy' 
+
+
 export const Context = createContext(null);
 export const CartContext = createContext(null);
+
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -48,7 +53,7 @@ function App() {
           <div className="App">
             <Header />
             <Routes >
-              <Route path="/" element={<h2>HomePage</h2>} />
+              <Route path="/" element={<HomePage />} />
               <Route path="/single-category/:cat" element={<SingleCategory />} />
               <Route path="/single-product/:id" element={<SingleProduct />} />
               <Route path="/cart" element={<Cart />} />
@@ -62,5 +67,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
