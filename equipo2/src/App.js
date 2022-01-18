@@ -1,5 +1,6 @@
 
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
 import SingleCategory from './components/SingleCategory';
 import SingleProduct from './components/SingleProduct';
@@ -11,7 +12,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
   } from "react-router-dom";
 export const Context = createContext(null);
 export const CartContext = createContext(null);
@@ -38,7 +38,6 @@ function App() {
     fetchApi();
     checkCart();
   }, []);
-
   return (
     <Router >
          <CartContext.Provider value={{ cart, setCart }}>
@@ -53,7 +52,7 @@ function App() {
                 <Route path="/about-us" element={<h2>About us</h2>} />
                 <Route path="/privacy-policy" element={<Privacy />} />
                </Routes>
-               {/* <Footer /> */}
+               <Footer /> 
             </div>
             </Context.Provider>
         </CartContext.Provider>
