@@ -1,8 +1,8 @@
 import "./component.css";
 import { Context, CartContext } from "../../App";
 import ReactImageMagnify from "react-image-magnify";
-import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { useParams , Link , useNavigate } from "react-router-dom";
 import {
   Divider,
   Rating,
@@ -10,7 +10,11 @@ import {
   Skeleton,
   Box,
   Button,
-  Snackbar
+  Snackbar,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  DialogContent
 } from "@mui/material";
 import  MuiAlert from "@mui/material/Alert";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
@@ -23,10 +27,12 @@ function SingleProduct() {
   //Retrieve id from the URL
   const { id } = useParams();
   //We take product with id from the URL
-  const productData = useContext(Context).filter((d) => d.id == id)[0];
+  const productData = useContext(Context).filter((d) => d.id === parseInt(id))[0];
   const { cart, setCart } = useContext(CartContext);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const [lastItem,setLastItem] = useState("");
+  const navigate = useNavigate();
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -34,8 +40,11 @@ function SingleProduct() {
     }
     setOpen(false);
   };
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
   //There are times when the component is mounted without the context with data arriving.
-  const isData = productData != undefined;
+  const isData = productData !== undefined;
   //We render in case we have data already loaded. In case of no data, circular load is displayed.
   if (isData) {
     const { title, image, price, description, rating } = productData;
@@ -45,12 +54,13 @@ function SingleProduct() {
       let tempCart = cart;
       //In case we want to add an existing element, we add 1 to quantity
       let exists = false;
-      tempCart.map((d, i) => {
-        if (d.id == id) {
+      for (let index = 0; index < tempCart.length; index++) {
+        if (tempCart[index].id === id) {
           exists = true;
-          tempCart[i].qty++;
+          tempCart[index].qty++;
         }
-      });
+        
+      }
       //If the product exists, +1 has already been added to qty, so the new cart is assigned to the state.
       if (exists) {
         setCart(tempCart);
@@ -63,7 +73,9 @@ function SingleProduct() {
       }
       setLastItem(title.substring(0, 20) + "...")
       setOpen(true);
+      setOpenModal(true);
     }
+
     return (
       <div className="single-product">
         <div className="left-side">
@@ -96,8 +108,8 @@ function SingleProduct() {
                 precision={0.2}
                 readOnly
                 size="small"
-              />
-              <small> de {rating.count} votaciones.</small>
+              /> 
+              <small>de {rating.count} votaciones.</small>
             </div>
           </div>
 
@@ -111,16 +123,31 @@ function SingleProduct() {
               onClick={handleAddCart}
               startIcon={<ShoppingCartCheckoutIcon />}
             >
-              Añadir
+              Add to the cart
             </Button>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
               <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                 {lastItem} added to the cart!
               </Alert>
             </Snackbar>
-            <Button variant="outlined" color="success">
-              Comprar
-            </Button>
+            <Dialog open={openModal} onClose={handleCloseModal}>
+              <DialogTitle>{lastItem} added to the cart!</DialogTitle>
+              <DialogContent>
+                <div className="modal-content">
+                <img src={image} alt={title} className="modal-image"/>
+                <div className="info-modal">
+                  <h4>{title}</h4>
+                  <h5>Quantity : 1</h5>
+                </div>
+                </div>
+              </DialogContent>
+              <DialogActions>
+              <Link className="modal-button" to="/cart">
+                <Button variant="outlined" color="secondary" onClick={handleCloseModal}>Go to the cart</Button>
+             </Link>
+             <Button variant="outlined" color="secondary" onClick={()=>navigate(-1)}>Continue shoping...</Button>
+               </DialogActions>
+             </Dialog>
           </div>
         </div>
       </div>

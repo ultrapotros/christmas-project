@@ -35,3 +35,17 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.modal-content {
+    width: 100%;
+    display: flex;
+}
+
+.modal-image {
+    width: 30%;
+    margin-right: 40px;
+}
+
+.modal-button {
+    text-decoration: none;
+}
