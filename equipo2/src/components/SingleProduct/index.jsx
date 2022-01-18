@@ -1,7 +1,7 @@
 import "./component.css";
-import { Context, CartContext } from "../../App";
+import { Context, CartContext, RatingContext } from "../../App";
 import ReactImageMagnify from "react-image-magnify";
-import React, { useState, useContext } from "react";
+import React, { useState, useContext ,useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Divider,
@@ -31,11 +31,12 @@ function SingleProduct() {
     (d) => d.id === parseInt(id)
   )[0];
   const { cart, setCart } = useContext(CartContext);
+  const ratingContext = useContext(RatingContext);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [lastItem, setLastItem] = useState("");
   const navigate = useNavigate();
-  const [value, setValue] = React.useState(2);
+  const [localRating, setLocalRating] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
   const labels = {
     0.5: "Useless",
@@ -49,6 +50,10 @@ function SingleProduct() {
     4.5: "Excellent",
     5: "Excellent+",
   };
+
+  useEffect(() =>{
+    
+  }, [])
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -119,10 +124,10 @@ function SingleProduct() {
             <div className="single-rating">
               <Rating
                 name="half-rating-read"
-                value={value}
+                value={localRating}
                 precision={0.5}
                 onChange={(event, newValue) => {
-                  setValue(newValue);
+                  setLocalRating(newValue);
                 }}
                 onChangeActive={(event, newHover) => {
                   //Function that takes care of updating the rating on hover
@@ -134,7 +139,7 @@ function SingleProduct() {
                 {" "}
                 {rating.rate} ({rating.count})
               </small>
-              {value !== null && (
+              {rating !== null && (
             <Box >{labels[hover !== -1 ? hover : null]}</Box>
             )}
             </div>
