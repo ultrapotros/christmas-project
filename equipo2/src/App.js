@@ -47,24 +47,24 @@ function App() {
 
   return (
     <Router >
-         <CartContext.Provider value={{ cart, setCart }}>
-           <Context.Provider value={products}>
-            <div className="App">
-              <Header />
-              <Routes >
-                <Route path="/" element={<HomePage />} />
-                <Route path="/single-category/:cat" element={<SingleCategory />} />
-                <Route path="/single-product/:id" element={<SingleProduct />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/about-us" element={<h2>About us</h2>} />
-                <Route path="/privacy-policy" element={<Privacy />} />
-                <Route path="*" element={<NotFoundPage />} />
-               </Routes>
-               <Footer /> 
-            </div>
-            </Context.Provider>
-        </CartContext.Provider>
-	</Router>
+      <CartContext.Provider value={{ cart, setCart }}>
+        <Context.Provider value={products}>
+          <div className="App">
+            <Header />
+            <Routes >
+              <Route path="/" element={<HomePage />} />
+              <Route path="/single-category/:cat" element={<SingleCategory />} />
+              <Route path="/single-product/:id" element={<SingleProduct />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/about-us" element={<h2>About us</h2>} />
+              <Route path="/privacy-policy" element={<Privacy />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+            <Footer /> 
+          </div>
+        </Context.Provider>
+      </CartContext.Provider>
+	  </Router>
   );
 }
 

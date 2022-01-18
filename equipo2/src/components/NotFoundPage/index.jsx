@@ -6,7 +6,7 @@ import PageNotFound from './404.webp';
 class NotFoundPage extends React.Component{
     render(){
         return <div>
-            <img src={PageNotFound}  />
+            <img src={PageNotFound} alt='NotFoundPage' />
             <p style={{textAlign:"center"}}>
               <Link to="/"> Go to Home </Link>
             </p>
