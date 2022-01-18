@@ -235,4 +235,20 @@ function Cart() {
   );
 }
 
+function Purchase() {
+  return (<>
+    <Button
+        variant="outlined"
+        color="error"
+        size="small"
+        name="Purchase"
+        /* onClick={handlePurchase} */
+        startIcon={<DeleteIcon />}
+      >
+        Purchase
+      </Button>
+    </>
+  ); 
+}
+
 export default Cart;
