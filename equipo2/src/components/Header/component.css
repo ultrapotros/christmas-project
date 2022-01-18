@@ -20,7 +20,7 @@
     grid-template-columns: repeat( 7, 1fr);
     align-items: center;
 }
-a {
+.header a {
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
@@ -31,6 +31,10 @@ a {
 }
 .mobileIcon {
   display: none;
+}
+.active {
+  background-color: #23394d;
+  color:rgb(235, 176, 50);
 }
 @media screen and (max-width: 860px) { /* this media query allows us to change the top bar to a lateral one*/
   .showed {
