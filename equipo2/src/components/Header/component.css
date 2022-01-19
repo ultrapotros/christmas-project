@@ -1,6 +1,7 @@
 .header {
     width: 95%;
     margin: auto;
+    margin-top: 0;
 }
 
 .topHeader {
@@ -32,6 +33,12 @@
 .mobileIcon {
   display: none;
 }
+#active {
+  background-color: #ebb032;
+  color: #23394d;
+  border-radius: 5px;
+  padding:0.3rem;
+}
 
 @media screen and (max-width: 860px) { /* this media query allows us to change the top bar to a lateral one*/
   .showed {
@@ -41,7 +48,8 @@
       background-color: #23394d;
       position: absolute;
       top: 25vh;
-      width: 80%;
+      width: 60%;
+      margin-left: 35%;
       height: 50vh;
       justify-content: center;
       display: flex;
@@ -50,11 +58,16 @@
       align-items: center;
       left: -100%;
       transition: 0.5s all ease;   
-      z-index: 1;
+      z-index: 2;
       border-radius: 10px;
   }
-  a {
-    color: rgb(235, 176, 50);
+  .showed a {
+    color: #ebb032;
+  }
+  #active {
+    color: #23394d;
+    border-radius:5px;
+    padding: 0.3rem;
   }
   .mobileIcon { 
     display: block;
