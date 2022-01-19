@@ -42,6 +42,7 @@ function App() {
         setCart(cartLocal);
       }
     }
+
     fetchApi();
     checkCart();
   }, []);
