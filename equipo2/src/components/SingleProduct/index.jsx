@@ -1,7 +1,7 @@
 import "./component.css";
-import { Context, CartContext, RatingContext } from "../../App";
+import { Context, CartContext } from "../../App";
 import ReactImageMagnify from "react-image-magnify";
-import React, { useState, useContext ,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import {
   Divider,
@@ -15,6 +15,7 @@ import {
   DialogActions,
   DialogTitle,
   DialogContent,
+  Tooltip,
 } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
@@ -31,13 +32,13 @@ function SingleProduct() {
     (d) => d.id === parseInt(id)
   )[0];
   const { cart, setCart } = useContext(CartContext);
-  const ratingContext = useContext(RatingContext);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [lastItem, setLastItem] = useState("");
   const navigate = useNavigate();
-  const [localRating, setLocalRating] = React.useState(2);
-  const [hover, setHover] = React.useState(-1);
+  const [localRating, setLocalRating] = useState(-1);
+  const [hover, setHover] = useState(-1);
+  const [openTooltip, setOpenTooltip] = useState(false);
   const labels = {
     0.5: "Useless",
     1: "Useless+",
@@ -51,9 +52,31 @@ function SingleProduct() {
     5: "Excellent+",
   };
 
-  useEffect(() =>{
-    
-  }, [])
+  useEffect(() => {
+    function checkRating() {
+      let ratingLocalTemp = JSON.parse(window.localStorage.getItem("rating"));
+      if (ratingLocalTemp !== null && ratingLocalTemp.length > 0) {
+        for (let index = 0; index < ratingLocalTemp.length; index++) {
+          if (parseInt(ratingLocalTemp[index].id) === parseInt(id)) {
+            setLocalRating(ratingLocalTemp[index].rating);
+          }
+        }
+      }
+    }
+    checkRating();
+  }, []);
+
+  useEffect(() => {
+    if (localRating > -1) {
+      let dataLocal = JSON.parse(window.localStorage.getItem("rating"));
+      let dataUdated =
+        dataLocal !== null
+          ? [...dataLocal, { id: id, rating: localRating }]
+          : [{ id: id, rating: localRating }];
+      window.localStorage.setItem("rating", JSON.stringify(dataUdated));
+      setOpenTooltip(true);
+    }
+  }, [localRating]);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -95,6 +118,20 @@ function SingleProduct() {
       setOpen(true);
       setOpenModal(true);
     }
+    function handleHover(event, newHover) {
+      //Function that takes care of updating the rating on hover
+      setHover(newHover);
+    }
+    const ratingProps = {
+      readOnly: true,
+      onChangeActive: ()=>{},
+    };
+
+    const toolTipProps = {
+      disableFocusListener: true,
+      disableTouchListener: true,
+      disableHoverListener: true,
+    };
 
     return (
       <div className="single-product">
@@ -121,28 +158,31 @@ function SingleProduct() {
           <Divider />
           <div className="section-single">
             <h3>{price}€</h3>
-            <div className="single-rating">
-              <Rating
-                name="half-rating-read"
-                value={localRating}
-                precision={0.5}
-                onChange={(event, newValue) => {
-                  setLocalRating(newValue);
-                }}
-                onChangeActive={(event, newHover) => {
-                  //Function that takes care of updating the rating on hover
-                  setHover(newHover);
-                }}
-                size="small"
-              />
-              <small>
-                {" "}
-                {rating.rate} ({rating.count})
-              </small>
-              {rating !== null && (
-            <Box >{labels[hover !== -1 ? hover : null]}</Box>
-            )}
-            </div>
+            <Tooltip
+              {...(openTooltip ? "" : toolTipProps)}
+              title={`You rated ${localRating} this item!`}
+            >
+              <div className="single-rating">
+                <Rating
+                  name="half-rating-read"
+                  defaultValue={rating.rate}
+                  precision={0.5}
+                  onChange={(event, newValue) => {
+                    setLocalRating(newValue);
+                  }}
+                  size="small"
+                  onChangeActive={handleHover}
+                  {...(localRating > -1 ? ratingProps : "")}
+                />
+                <small>
+                  {" "}
+                  {rating.rate} ({rating.count})
+                </small>
+                {rating !== null && (
+                  <Box>{labels[hover !== -1 ? hover : null]}</Box>
+                )}
+              </div>
+            </Tooltip>
           </div>
 
           <Divider />
@@ -151,7 +191,7 @@ function SingleProduct() {
           <div className="buy-options">
             <Button
               variant="contained"
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, color: "#ebb032", backgroundColor: "#23394d" }}
               onClick={handleAddCart}
               startIcon={<ShoppingCartCheckoutIcon />}
             >
