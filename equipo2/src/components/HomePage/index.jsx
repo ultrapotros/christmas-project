@@ -10,7 +10,6 @@ export default function HomePage() {
   const slides = useContext(Context); /* we get data from context */
   const [current, setCurrent] = useState(0);
   const length = slides.length - 1;
-  console.log(slides);
   const nextSlide = () => { /* next arrow function */
     setCurrent(current === length ? 0 : current + 1);
   };
@@ -36,8 +35,8 @@ export default function HomePage() {
           <div className= 'main-image'>
               {slides.map((slide, index) => {
                 return (
-                    <a href= {`/single-product/${slide.id}`}> 
-                        <div className={index === current ? 'slide active' : 'slide'} key={index}>
+                    <a key={index} href={`/single-product/${slide.id}`}> 
+                        <div className={index === current ? 'slide active' : 'slide'} >
                             {/* here we assigned the class active to the image to show */}
                             {index === current && (<img src={slide.image} alt={slide.description} className='image' />)}
                         </div>
