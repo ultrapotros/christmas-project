@@ -12,7 +12,10 @@ import {
   Accordion,
   AccordionSummary,
   Typography,
-  AccordionDetails
+  AccordionDetails,
+  Dialog,
+  DialogTitle,
+  DialogContent
 } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 
@@ -97,7 +100,7 @@ function ListItems(props) {
             <div className="cart-item">
               <img src={d.image} alt={d.title} />
               <div className="cart-item-details">
-                <Link to={`/single-product/${d.id}"`} >
+                <Link to={`/single-product/${d.id}`} >
                 <p>{d.title}</p>
                 </Link>
                 <FormControl>
@@ -239,7 +242,22 @@ function Cart() {
 }
 
 function Purchase() {
-  const { setCart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
+  const [openModal, setOpenModal] = useState(false);
+  const resumenBuy = [];
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setCart([]);
+    window.localStorage.setItem("cart", JSON.stringify([]));
+  };
+   
+  cart.forEach((e) => {resumenBuy.push(
+    <div key={e.id}>
+      <p> {e.title} {e.qty < 2 ? '' : `x ${e.qty}`} </p>
+    </div>)
+  });
+
   return (
     <div className="purchase">
       <Button
@@ -247,13 +265,18 @@ function Purchase() {
           size="large"
           name="Purchase"
           onClick={() =>{
-            setCart([]);
-            window.localStorage.setItem("cart", JSON.stringify([]));
+            setOpenModal(true);
           }}
           startIcon={<MonetizationOnIcon />}
         >
           Purchase
         </Button>
+        <Dialog open={openModal} onClose={handleCloseModal} >
+          <DialogTitle>Thanks for your purchase!</DialogTitle>
+          <DialogContent>
+            {resumenBuy}
+          </DialogContent>
+        </Dialog>
     </div>
   ); 
 }
