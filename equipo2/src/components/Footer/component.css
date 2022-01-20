@@ -10,17 +10,19 @@
     padding: 2rem 0;
     row-gap: 1rem;
 }
+#nav, #social {
+    display:flex;  
+    align-items: center;
+    gap: 1rem;
+}
 #nav {
-    display:flex;
     gap: 1rem;
     margin-left: 2rem;
+    align-items: center;
 }
 #social {
     width: 100%;
-    display: flex;
-    gap: 15px;
     justify-content: flex-end;
-    align-items: center;
 }
 #nav a, #social a {
     font-size:1.2rem;
@@ -30,4 +32,7 @@
 }
 #social a:last-child {
     margin-right: 2rem;
+}
+#nav #active {
+    color:#23394d; 
 }
