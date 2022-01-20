@@ -64,7 +64,7 @@ function SingleProduct() {
       }
     }
     checkRating();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (localRating > -1) {
@@ -76,7 +76,7 @@ function SingleProduct() {
       window.localStorage.setItem("rating", JSON.stringify(dataUdated));
       setOpenTooltip(true);
     }
-  }, [localRating]);
+  }, [localRating, id]);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
