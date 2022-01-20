@@ -3,11 +3,14 @@ import './component.css';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Context } from '../../App';
+import { CircularProgress, Skeleton, Box } from '@mui/material';
+
 
 export default function HomePage() {
   const slides = useContext(Context); /* we get data from context */
   const [current, setCurrent] = useState(0);
   const length = slides.length - 1;
+  console.log(slides);
   const nextSlide = () => { /* next arrow function */
     setCurrent(current === length ? 0 : current + 1);
   };
@@ -15,13 +18,15 @@ export default function HomePage() {
     setCurrent(current === 0 ? length : current - 1);
   };
   let bottomIndex1 = current < 2 ? current + (length - 1): current - 2; /* here we assign values to bottom slider */
-  let bottomIndex2 = current < 1 ? current + (length - 1): current - 1;;
+  let bottomIndex2 = current < 1 ? current + length: current - 1;;
   let bottomIndex3 = current;
   let bottomIndex4 = current > length - 1 ? 0 : current + 1;;
   let bottomIndex5 = current > length - 2 ? current - (length - 1): current + 2;;
   if (!Array.isArray(slides) || slides.length <= 0) {
     return null;
   }
+  if (slides.length !== 0) {
+    // We make sure that data are loaded
 
   return (
     <>
@@ -31,12 +36,12 @@ export default function HomePage() {
           <div className= 'main-image'>
               {slides.map((slide, index) => {
                 return (
-                    <div className={index === current ? 'slide active' : 'slide'} key={index}>
-                      {/* here we assigned the class active to the image to show */}
-                      {index === current && (
-                        <img src={slide.image} alt={slide.description} className='image' />
-                      )}
-                    </div>
+                    <a href= {`/single-product/${slide.id}`}> 
+                        <div className={index === current ? 'slide active' : 'slide'} key={index}>
+                            {/* here we assigned the class active to the image to show */}
+                            {index === current && (<img src={slide.image} alt={slide.description} className='image' />)}
+                        </div>
+                    </a>
                 );
               })}        
           </div>
@@ -60,6 +65,21 @@ export default function HomePage() {
       </section>    
     </>
   );
+
+
+  } 
+else {
+    // Structure while loading data
+    return( <>
+      <Box sx={{ width: 40 }}>
+        <CircularProgress />
+      
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+        <Skeleton animation="wave" />
+      </Box>
+    </>);
+  }
 };
 
 
