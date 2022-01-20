@@ -9,7 +9,7 @@ export default function Header() {
     {route:"/single-category/electronics", label: 'electronics'}, {route:'/about-us', label: 'about-us'}, 
     {route:'/cart', label: <ShoppingCartRounded />}];
   const [showMobileMenu, setShowMobileMenu] = useState(false); /* we assign false as first value */
-  
+
   return (
     <div className="header">
       <div className="topHeader">
@@ -18,8 +18,10 @@ export default function Header() {
             {showMobileMenu ? <CloseRounded /> : <MenuRounded />} {/* we use showMobileMenu to choose the icon to show */}
         </div>
       </div> 
-      <div id= "headerNav" className={showMobileMenu ? 'showed' : null} > {/*we use showMobileMenu to assign a class to show lateral menu*/}
-            {routes.map((element, index) => <a href= {element.route} key={`category${index}`}>{element.label}</a>)}
+      <div id= "headerNav" className={showMobileMenu ? 'showed' : null} > {/*we use showMobileMenu to assign a class to show lateral menu */}
+            {routes.map((element, index) => <a href= {element.route} key={`category${index}`} 
+            id={window.location.pathname === element.route ? 'active' : null}/*  we use pathname to assign active class  */>
+              {element.label}</a>)}
       </div> 
     </div> 
   );
