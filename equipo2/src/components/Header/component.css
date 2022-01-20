@@ -1,0 +1,78 @@
+.header {
+    width: 95%;
+    margin: auto;
+    margin-top: 0;
+}
+
+.topHeader {
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+}
+.topHeader img {
+    height:100%;
+    max-height: fit-content;
+    object-fit: cover;
+}
+#headerNav {
+    width: 100%;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: repeat( 7, 1fr);
+    align-items: center;
+}
+.header a {
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    color: #23394d;
+}
+#headerNav a:hover {
+    border-bottom: 3px solid #1976d2;
+}
+.mobileIcon {
+  display: none;
+}
+#active {
+  background-color: #ebb032;
+  color: #23394d;
+  border-radius: 5px;
+  padding:0.3rem;
+}
+
+@media screen and (max-width: 860px) { /* this media query allows us to change the top bar to a lateral one*/
+  .showed {
+     transform: translateX(100%) ; /* this class hide the lateral nav*/
+  }
+  #headerNav {
+      background-color: #23394d;
+      position: absolute;
+      top: 25vh;
+      width: 60%;
+      margin-left: 35%;
+      height: 50vh;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+      row-gap: 2vh;
+      align-items: center;
+      left: -100%;
+      transition: 0.5s all ease;   
+      z-index: 2;
+      border-radius: 10px;
+  }
+  .showed a {
+    color: #ebb032;
+  }
+  #active {
+    color: #23394d;
+    border-radius:5px;
+    padding: 0.3rem;
+  }
+  .mobileIcon { 
+    display: block;
+    cursor: pointer;
+  }
+}
+  
+

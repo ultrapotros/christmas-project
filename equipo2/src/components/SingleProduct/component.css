@@ -1,0 +1,53 @@
+.single-product {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.left-side {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+}
+
+.right-side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-single {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.single-rating {
+    display: flex;
+    align-items: center;
+    width: 200px;
+}
+
+.buy-options {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-content {
+    width: 100%;
+    display: flex;
+}
+
+.modal-image {
+    width: 30%;
+    margin-right: 40px;
+}
+
+.modal-button {
+    text-decoration: none;
+}

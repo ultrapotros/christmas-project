@@ -1,0 +1,33 @@
+.footerContainer {
+    bottom: 0;
+    background-color:#23394d;
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );    
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0;
+    row-gap: 1rem;
+}
+#nav {
+    display:flex;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+#social {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    align-items: center;
+}
+#nav a, #social a {
+    font-size:1.2rem;
+    text-decoration: none;
+    color: rgb(235, 176, 50);
+    text-transform: uppercase;
+}
+#social a:last-child {
+    margin-right: 2rem;
+}
