@@ -64,7 +64,7 @@ function SingleProduct() {
       }
     }
     checkRating();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (localRating > -1) {
@@ -76,7 +76,7 @@ function SingleProduct() {
       window.localStorage.setItem("rating", JSON.stringify(dataUdated));
       setOpenTooltip(true);
     }
-  }, [localRating]);
+  }, [localRating, id]);
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
@@ -110,10 +110,10 @@ function SingleProduct() {
       } else {
         //In case the item does not exist, we add the already existing items and the new item to the cart
         tempCart = [...cart, { id: id, title: title, qty: 1 }];
-
         setCart(tempCart);
-        window.localStorage.setItem("cart", JSON.stringify(tempCart));
       }
+      window.localStorage.setItem("cart", JSON.stringify(tempCart));
+
       setLastItem(title.substring(0, 20) + "...");
       setOpen(true);
       setOpenModal(true);
