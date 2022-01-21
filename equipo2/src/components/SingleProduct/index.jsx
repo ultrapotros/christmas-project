@@ -61,6 +61,8 @@ function SingleProduct() {
     5: "Excellent+",
   };
 
+  //When loading the component we check if in localStorage there is a rating for this ID. 
+  //If it exists we assign its value to localRating
   useEffect(() => {
     function checkRating() {
       let ratingLocalTemp = JSON.parse(window.localStorage.getItem("rating"));
@@ -74,7 +76,7 @@ function SingleProduct() {
     }
     checkRating();
   }, []);
-
+  //In case localRating is modified, if the value is greater than -1 ( meaning that it has a vote ) we show the toolTip
   useEffect(() => {
     if (localRating > -1) {
       let dataLocal = JSON.parse(window.localStorage.getItem("rating"));
@@ -86,7 +88,7 @@ function SingleProduct() {
       setOpenTooltip(true);
     }
   }, [localRating]);
-
+  
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
