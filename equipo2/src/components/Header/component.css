@@ -3,7 +3,7 @@
     margin: auto;
     margin-top: 0;
     background-color: #23394d;
-    padding-bottom: 1rem;
+    padding-bottom: 0.2rem;
 }
 .topHeader {
     height: 10vh;
@@ -38,7 +38,7 @@
     color: #ebb032;
 }
 #headerNav a:hover {
-    border-bottom: 3px solid #1976d2;
+    border-bottom: 3px solid #ebb032;
 }
 #headerNav svg {
   max-height: fit-content;
@@ -49,6 +49,9 @@
 #active {
   background-color: #ebb032;
   border-radius: 5px;
+}
+#active a:hover {
+  border-bottom: 3px solid #23394d;
 }
 #active a {
   color: #23394d;

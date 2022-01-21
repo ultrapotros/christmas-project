@@ -6,8 +6,8 @@ import webLogo from './logoFondoAzulRecortado.png';
 export default function Header() { 
   const routes = [{route:'/', label: 'home'}, {route:"/single-category/men's%20clothing", label: "men's clothing"},
    {route:"/single-category/women's%20clothing", label: "women's clothing"}, {route:"/single-category/jewelery", label: 'jewelery'},
-    {route:"/single-category/electronics", label: 'electronics'}, {route:'/about-us', label: 'about-us'}, 
-    {route:'/cart', label: <ShoppingCartRounded />}];
+   {route:"/single-category/electronics", label: 'electronics'}, {route:'/about-us', label: 'about-us'}, 
+   {route:'/cart', label: <ShoppingCartRounded />}];
   const [showMobileMenu, setShowMobileMenu] = useState(false); /* we assign false as first value */
 
   return (
@@ -20,9 +20,11 @@ export default function Header() {
         </div>
       </div> 
       <div id= "headerNav" className={showMobileMenu ? 'showed' : null} > {/*we use showMobileMenu to assign a class to show lateral menu */}
-            {routes.map((element, index) => <div key={`category${index}`} id={window.location.pathname === element.route ? 'active' : null}/*  we use pathname to assign active class  */><a href= {element.route}  
-            >
-              {element.label}</a></div>)}
+            {routes.map((element, index) => 
+            <div id={window.location.pathname === element.route ? 'active' : null}/*we use pathname to assign id*/
+                key={`category${index}`} >
+                <a href= {element.route}>{element.label}</a>
+            </div>)}
       </div> 
     </div> 
   );
