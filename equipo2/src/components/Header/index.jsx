@@ -1,7 +1,7 @@
 import './component.css';
 import React, { useState } from "react";
 import { ShoppingCartRounded , MenuRounded, CloseRounded } from '@mui/icons-material';
-import webLogo from './storeLogo.png';
+import webLogo from './logoFondoAzulRecortado.png';
 
 export default function Header() { 
   const routes = [{route:'/', label: 'home'}, {route:"/single-category/men's%20clothing", label: "men's clothing"},
@@ -13,15 +13,16 @@ export default function Header() {
   return (
     <div className="header">
       <div className="topHeader">
+      {/*   <h1>equipo 2</h1> */}
         <img src={webLogo} alt='logo'/>
         <div className = 'mobileIcon' onClick={() => setShowMobileMenu(!showMobileMenu)}> {/* onclick we change the value of showMobileMenu */}
             {showMobileMenu ? <CloseRounded /> : <MenuRounded />} {/* we use showMobileMenu to choose the icon to show */}
         </div>
       </div> 
       <div id= "headerNav" className={showMobileMenu ? 'showed' : null} > {/*we use showMobileMenu to assign a class to show lateral menu */}
-            {routes.map((element, index) => <a href= {element.route} key={`category${index}`} 
-            id={window.location.pathname === element.route ? 'active' : null}/*  we use pathname to assign active class  */>
-              {element.label}</a>)}
+            {routes.map((element, index) => <div key={`category${index}`} id={window.location.pathname === element.route ? 'active' : null}/*  we use pathname to assign active class  */><a href= {element.route}  
+            >
+              {element.label}</a></div>)}
       </div> 
     </div> 
   );
