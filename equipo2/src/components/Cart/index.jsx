@@ -28,8 +28,11 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 //Subcomponent to show list of cart items
 function ListItems(props) {
+  //Cart context state created in app.js
   const { cart, setCart } = useContext(CartContext);
+  //Boolean to define if a Snackbar is showed 
   const [open, setOpen] = useState(false);
+  //Modified string of the article title deleted.
   const [lastItem, setLastItem] = useState("");
   //When the value of the select changes we modify cart both in local and in localStorage
   function handleChange(e) {
@@ -149,7 +152,6 @@ function ListItems(props) {
 //Subcomponent to show payment related options
 function Payments(props) {
   const [totalPrice, setTotalPrice] = useState(0);
-
   useEffect(() => {
     let tempPrice = 0;
     props.data.map((e) => (tempPrice += e.price * e.qty));
@@ -199,6 +201,7 @@ function Payments(props) {
 function Cart() {
   const context = useContext(Context);
   const { cart } = useContext(CartContext);
+  //We fetch all the neccesary data from the context to cartData
   const [cartData, setCartData] = useState([]);
   //We load the data from cart items
   //Me falta darle unas vueltas a como optimizar el sacar datos porque se ve infernal xd
