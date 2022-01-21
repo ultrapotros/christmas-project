@@ -64,11 +64,6 @@
   .showed a {
     color: #ebb032;
   }
-  #active {
-    color: #23394d;
-    border-radius:5px;
-    padding: 0.3rem;
-  }
   .mobileIcon { 
     display: block;
     cursor: pointer;
