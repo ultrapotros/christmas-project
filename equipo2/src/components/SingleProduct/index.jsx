@@ -31,14 +31,23 @@ function SingleProduct() {
   const productData = useContext(Context).filter(
     (d) => d.id === parseInt(id)
   )[0];
+  //Cart context state created in app.js
   const { cart, setCart } = useContext(CartContext);
+  //Boolean to define if a Snackbar is showed
   const [open, setOpen] = useState(false);
+  //Boolean to define if the modal is showed
   const [openModal, setOpenModal] = useState(false);
+  //Modified string of the article title added.
   const [lastItem, setLastItem] = useState("");
+  //Necessary to navigate to previous pages when adding an article.
   const navigate = useNavigate();
+  //Variable that stores the user's score in a state, if it is -1 it has no score.
   const [localRating, setLocalRating] = useState(-1);
+  //Status to manage the text displayed when hovering over the rating
   const [hover, setHover] = useState(-1);
+  //Boolean to define if the toolTip is showed
   const [openTooltip, setOpenTooltip] = useState(false);
+  //Array of labels displayed when hovering on rating
   const labels = {
     0.5: "Useless",
     1: "Useless+",
@@ -107,13 +116,16 @@ function SingleProduct() {
       //If the product exists, +1 has already been added to qty, so the new cart is assigned to the state.
       if (exists) {
         setCart(tempCart);
+        
+
       } else {
         //In case the item does not exist, we add the already existing items and the new item to the cart
         tempCart = [...cart, { id: id, title: title, qty: 1 }];
 
         setCart(tempCart);
-        window.localStorage.setItem("cart", JSON.stringify(tempCart));
+        
       }
+      window.localStorage.setItem("cart", JSON.stringify(tempCart));
       setLastItem(title.substring(0, 20) + "...");
       setOpen(true);
       setOpenModal(true);
