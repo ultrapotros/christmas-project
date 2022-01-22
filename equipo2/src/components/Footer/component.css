@@ -18,7 +18,8 @@
 #nav {
     gap: 1rem;
     margin-left: 2rem;
-    align-items: center;
+    margin-bottom: 8px;
+    padding: 0.2rem;
 }
 #social {
     width: 100%;
@@ -27,12 +28,33 @@
 #nav a, #social a {
     font-size:1.2rem;
     text-decoration: none;
-    color: rgb(235, 176, 50);
+    color: #ebb032;
     text-transform: uppercase;
+    text-align: center;
+    padding: 0.2rem; 
+}
+#nav a:hover, #social a:hover {
+    border-bottom: 3px solid #ebb032;
 }
 #social a:last-child {
     margin-right: 2rem;
 }
-#nav #active {
+#nav #active a {
     color:#23394d; 
+}
+#nav #active a:hover{
+    border-bottom: 2px solid #23394d; 
+    padding-bottom: 0.1rem;
+
+}
+#nav div {
+    margin-top: 0.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+#nav #active {
+    padding: 0.3rem;
+    padding-bottom: 0.5rem; 
 }

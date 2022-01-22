@@ -8,9 +8,11 @@ function MyTabs() {
   return (
   <React.Fragment>
       <div  id= "nav">
-          {routes.map((element, index) => <a href= {element.route} key={`bottomnav${index}`}
-          id={window.location.pathname === element.route ? 'active' : null}>  {/* we use pathname to assign active class   */}
-            {element.label}</a>)}
+          {routes.map((element, index) =>
+            <div id={window.location.pathname === element.route ? 'active' : null} /* we use pathname to assign active class   */
+            key={`bottomnav${index}`}>
+                  <a href= {element.route} >{element.label}</a>
+            </div>)}
       </div>
   </React.Fragment>
   );
