@@ -1,11 +1,14 @@
 .header {
-    width: 95%;
-    margin: auto;
-    margin-top: 0;
+    width: 100%;
+    height: 19vh;
+    margin: 0 auto;
+    background-color: #23394d;
+    padding-bottom: 0.2rem;
 }
-
 .topHeader {
     height: 10vh;
+    width: 98%;
+    margin: auto;
     display: flex;
     justify-content: space-between;
 }
@@ -15,59 +18,81 @@
     object-fit: cover;
 }
 #headerNav {
-    width: 100%;
-    margin-bottom: 8px;
+    width: 98%;
+    height: 8vh;
+    margin: auto auto 0 auto;
     display: grid;
     grid-template-columns: repeat( 7, 1fr);
     align-items: center;
+    padding: 0.2rem;
 }
+#headerNav div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 95%;
+    align-items: center;
+  }
 .header a {
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
-    color: #23394d;
+    color: #ebb032;
+    width: fit-content;
 }
 #headerNav a:hover {
-    border-bottom: 3px solid #1976d2;
+    border-bottom: 3px solid #ebb032;
+}
+#headerNav svg {
+    max-height: max-content;
 }
 .mobileIcon {
-  display: none;
+    display: none;
 }
 #active {
-  background-color: #ebb032;
-  color: #23394d;
-  border-radius: 5px;
-  padding:0.3rem;
+    background-color: #ebb032;
+    border-radius: 5px;
 }
-
+#active a:hover {
+    border-bottom: 3px solid #23394d;
+}
+  #active a {
+    color: #23394d;
+}
 @media screen and (max-width: 860px) { /* this media query allows us to change the top bar to a lateral one*/
   .showed {
-     transform: translateX(100%) ; /* this class hide the lateral nav*/
+      transform: translateX(100%) ; /* this class hide the lateral nav*/
   }
+  #headerNav, #headerNav div, .mobileIcon {
+      display: flex;
+      align-items: center;
+  } 
   #headerNav {
       background-color: #23394d;
       position: absolute;
       top: 25vh;
-      width: 60%;
-      margin-left: 35%;
+      width: 50%;
+      margin-left: 45%;
       height: 50vh;
-      justify-content: center;
-      display: flex;
       flex-direction: column;
-      row-gap: 2vh;
-      align-items: center;
       left: -100%;
       transition: 0.5s all ease;   
       z-index: 2;
-      border-radius: 10px;
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 0.2rem;
+  }
+  #headerNav div {
+      row-gap: 2vh;
+      padding: 0 0.8rem;
   }
   .showed a {
-    color: #ebb032;
+      color: #ebb032;
   }
   .mobileIcon { 
-    display: block;
-    cursor: pointer;
-  }
+      cursor: pointer;
+      color: #ebb032;
+      margin-right: 0.8rem;
+    }
 }
   
 
