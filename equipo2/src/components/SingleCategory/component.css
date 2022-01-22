@@ -6,13 +6,17 @@
 
 #ImageListItem{
     margin: 2%;
-    height: 850px;
-    width: 550px;
+    width: 300px;
+    border: 1px;
+    border-style: solid;
+    border-color: #23394d;
+    padding: 5px;
+    text-decoration: none;
 }
 
 #ImageListItem > img {
-    height: 800px;
-    width: 500px;
+    height: 600px;
+    width: 250px;
     object-fit: contain;
     margin: 15px;
 }
