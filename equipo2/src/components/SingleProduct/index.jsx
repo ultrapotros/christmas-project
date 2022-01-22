@@ -244,7 +244,7 @@ function SingleProduct() {
               <DialogActions>
                 <Link className="modal-button" to="/cart">
                   <Button
-                    style={{
+                    sx={{
                       backgroundColor: "#ebb032",
                       color: "#23394d",
                       borderColor:"#ebb032",
@@ -258,7 +258,7 @@ function SingleProduct() {
                 </Link>
                 <Button
                   variant="outlined"
-                  style={{
+                  sx={{
                     borderColor:"#ebb032",
                     color: "#ebb032",
                     marginLeft:"2px"
