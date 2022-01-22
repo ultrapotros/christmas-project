@@ -12,11 +12,15 @@ import {
   Accordion,
   AccordionSummary,
   Typography,
-  AccordionDetails
+  AccordionDetails,
+  Dialog,
+  DialogTitle,
+  DialogContent
 } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
 
 import DeleteIcon from "@mui/icons-material/Delete";
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
@@ -28,8 +32,11 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 //Subcomponent to show list of cart items
 function ListItems(props) {
+  //Cart context state created in app.js
   const { cart, setCart } = useContext(CartContext);
+  //Boolean to define if a Snackbar is showed 
   const [open, setOpen] = useState(false);
+  //Modified string of the article title deleted.
   const [lastItem, setLastItem] = useState("");
   //When the value of the select changes we modify cart both in local and in localStorage
   function handleChange(e) {
@@ -37,9 +44,9 @@ function ListItems(props) {
     //We retrieve the id from the select's name property
     cart.map((d) => {
       //When the element is found, we create the element with the new quantity.
-      if (d.id == parseInt(e.target.name)) {
+      if (d.id === parseInt(e.target.name)) {
         //If 0 is entered in the select, the item is deleted.
-        if (e.target.value != 0) {
+        if (e.target.value !== 0) {
           tempArray.push({ id: d.id, title: d.title, qty: e.target.value });
         } else {
           setLastItem(d.title);
@@ -58,7 +65,7 @@ function ListItems(props) {
     let tempArray = [];
 
     cart.map((d) => {
-      if (d.id != parseInt(e.target.name)) {
+      if (d.id !== parseInt(e.target.name)) {
         tempArray.push(d);
       } else {
         setLastItem(d.title);
@@ -96,7 +103,7 @@ function ListItems(props) {
             <div className="cart-item">
               <img src={d.image} alt={d.title} />
               <div className="cart-item-details">
-                <Link to={`/single-product/${d.id}"`} >
+                <Link to={`/single-product/${d.id}`} >
                 <p>{d.title}</p>
                 </Link>
                 <FormControl>
@@ -149,7 +156,6 @@ function ListItems(props) {
 //Subcomponent to show payment related options
 function Payments(props) {
   const [totalPrice, setTotalPrice] = useState(0);
-
   useEffect(() => {
     let tempPrice = 0;
     props.data.map((e) => (tempPrice += e.price * e.qty));
@@ -191,6 +197,8 @@ function Payments(props) {
         <h3>TOTAL : </h3>
         <h3>{totalPrice.toFixed(2)}€</h3>
       </div>
+
+      <Purchase />
     </div>
     </>
   );
@@ -199,6 +207,7 @@ function Payments(props) {
 function Cart() {
   const context = useContext(Context);
   const { cart } = useContext(CartContext);
+  //We fetch all the neccesary data from the context to cartData
   const [cartData, setCartData] = useState([]);
   //We load the data from cart items
   //Me falta darle unas vueltas a como optimizar el sacar datos porque se ve infernal xd
@@ -207,7 +216,7 @@ function Cart() {
       let tempArray = [];
       context.map((d) => {
         cart.map((c) => {
-          if (c.id == d.id) {
+          if (parseInt(c.id) === d.id) {
             tempArray.push({ ...d, qty: c.qty });
           }
         });
@@ -233,6 +242,46 @@ function Cart() {
       </div>
     </>
   );
+}
+
+function Purchase() {
+  const { cart, setCart } = useContext(CartContext);
+  const [openModal, setOpenModal] = useState(false);
+  const resumenBuy = [];
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+    setCart([]);
+    window.localStorage.setItem("cart", JSON.stringify([]));
+  };
+   
+  cart.forEach((e) => {resumenBuy.push(
+    <div key={e.id}>
+      <p> {e.title} {e.qty < 2 ? '' : `x ${e.qty}`} </p>
+    </div>)
+  });
+
+  return (
+    <div className="purchase">
+      <Button
+          variant="contained"
+          size="large"
+          name="Purchase"
+          onClick={() =>{
+            setOpenModal(true);
+          }}
+          startIcon={<MonetizationOnIcon />}
+        >
+          Purchase
+        </Button>
+        <Dialog open={openModal} onClose={handleCloseModal} >
+          <DialogTitle>Thanks for your purchase!</DialogTitle>
+          <DialogContent>
+            {resumenBuy}
+          </DialogContent>
+        </Dialog>
+    </div>
+  ); 
 }
 
 export default Cart;

@@ -55,15 +55,17 @@ function App() {
         <Context.Provider value={products}>
           <div className="App">
             <Header />
-            <Routes >
-              <Route path="/" element={<HomePage />} />
-              <Route path="/single-category/:cat" element={<SingleCategory />} />
-              <Route path="/single-product/:id" element={<SingleProduct />} />
-              <Route path="/cart" element={<Cart />} />
-			  <Route path="/about-us" element={<AboutUs/>} />
-              <Route path="/privacy-policy" element={<Privacy />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
+            <main>
+                <Routes >
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/single-category/:cat" element={<SingleCategory />} />
+                  <Route path="/single-product/:id" element={<SingleProduct />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/about-us" element={<AboutUs/>} />
+                  <Route path="/privacy-policy" element={<Privacy />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>              
+            </main>
             <Footer /> 
           </div>
         </Context.Provider>
