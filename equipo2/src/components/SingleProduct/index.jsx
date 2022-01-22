@@ -222,7 +222,15 @@ function SingleProduct() {
                 {lastItem} added to the cart!
               </Alert>
             </Snackbar>
-            <Dialog open={openModal} onClose={handleCloseModal}>
+            <Dialog 
+              open={openModal} 
+              onClose={handleCloseModal}
+              PaperProps={{
+                style: {
+                  backgroundColor: "#23394d",
+                  color: "#ebb032",
+                }
+              }}>
               <DialogTitle>{lastItem} added to the cart!</DialogTitle>
               <DialogContent>
                 <div className="modal-content">
@@ -236,8 +244,13 @@ function SingleProduct() {
               <DialogActions>
                 <Link className="modal-button" to="/cart">
                   <Button
+                    sx={{
+                      backgroundColor: "#ebb032",
+                      color: "#23394d",
+                      borderColor:"#ebb032",
+                      
+                  }}
                     variant="outlined"
-                    color="secondary"
                     onClick={handleCloseModal}
                   >
                     Go to the cart
@@ -245,7 +258,12 @@ function SingleProduct() {
                 </Link>
                 <Button
                   variant="outlined"
-                  color="secondary"
+                  sx={{
+                    borderColor:"#ebb032",
+                    color: "#ebb032",
+                    marginLeft:"2px"
+                    
+                }}
                   onClick={() => navigate(-1)}
                 >
                   Continue shoping...
