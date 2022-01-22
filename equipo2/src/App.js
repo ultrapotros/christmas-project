@@ -6,16 +6,18 @@ import {
   Routes,
   Route,
   } from "react-router-dom";
-  
+
+
 import './App.css';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import SingleCategory from './components/SingleCategory';
 import SingleProduct from './components/SingleProduct';
-import AboutUs from './components/AboutUs';
 import Cart from './components/Cart';
-import Privacy from './components/Privacy' 
+import Privacy from './components/Privacy';
+import NotFoundPage from './components/NotFoundPage';
+import AboutUs from './components/AboutUs';
 
 
 export const Context = createContext(null);
@@ -60,6 +62,7 @@ function App() {
               <Route path="/cart" element={<Cart />} />
               <Route path="/about-us" element={<AboutUs/>} />
               <Route path="/privacy-policy" element={<Privacy />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Footer /> 
           </div>
