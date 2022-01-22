@@ -54,3 +54,20 @@
 .modal-button {
     text-decoration: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .single-product {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+    .left-side {
+        width: 70%;
+    }
+    .right-side {
+        width: 90%;
+    }
+    .buy-options {
+        justify-content: center;
+    }
+}
