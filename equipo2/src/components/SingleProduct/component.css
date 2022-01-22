@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 80%;
     justify-content: space-between;
-    margin-top: 50px;
+    margin: 50px auto;
 }
 
 .left-side {
@@ -46,6 +46,9 @@
 .modal-image {
     width: 30%;
     margin-right: 40px;
+    border: 2px solid #ebb032;
+    opacity: 0.7;
+    border-radius: 5px;
 }
 
 .modal-button {
