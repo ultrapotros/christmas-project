@@ -2,12 +2,11 @@
     bottom: 0;
     background-color:#23394d;
     width: 100%;
-    height: fit-content;
+    height: 11vh;
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );    
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 0;
     row-gap: 1rem;
 }
 #nav, #social {
