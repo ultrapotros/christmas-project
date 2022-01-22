@@ -13,7 +13,6 @@ export default function Header() {
   return (
     <div className="header">
       <div className="topHeader">
-      {/*   <h1>equipo 2</h1> */}
         <img src={webLogo} alt='logo'/>
         <div className = 'mobileIcon' onClick={() => setShowMobileMenu(!showMobileMenu)}> {/* onclick we change the value of showMobileMenu */}
             {showMobileMenu ? <CloseRounded /> : <MenuRounded />} {/* we use showMobileMenu to choose the icon to show */}
