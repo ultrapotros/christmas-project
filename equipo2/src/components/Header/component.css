@@ -60,7 +60,7 @@
   .showed {
      transform: translateX(100%) ; /* this class hide the lateral nav*/
   }
-  #headerNav, #headerNav div {
+  #headerNav, #headerNav div, .mobileIcon {
     display: flex;
     align-items: center;
   } 
@@ -86,9 +86,9 @@
     color: #ebb032;
   }
   .mobileIcon { 
-    display: block;
     cursor: pointer;
     color: #ebb032;
+    margin-right: 0.8rem;
   }
 }
   
