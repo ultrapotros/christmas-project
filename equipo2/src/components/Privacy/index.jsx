@@ -1,8 +1,6 @@
 import React from "react";
-import {
-    Divider
-} from '@mui/material';
-import LensIcon from '@mui/icons-material/Lens';
+import { Divider } from "@mui/material";
+import LensIcon from "@mui/icons-material/Lens";
 import "./component.css";
 
 function Privacy(props) {
@@ -14,8 +12,11 @@ function Privacy(props) {
         collected, used, and shared when you visit or make a purchase from
         (Store URL).
       </p>
-      
-    <h2 className="privacy-header"><LensIcon  fontSize="small" /> WHAT PERSONAL INFORMATION WE COLLECT <LensIcon  fontSize="small" /></h2>
+
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> WHAT PERSONAL INFORMATION WE COLLECT{" "}
+        <LensIcon fontSize="small" />
+      </h2>
       <p>
         When you visit the Site, we automatically collect certain information
         about your device, including information about your web browser, IP
@@ -41,7 +42,10 @@ function Privacy(props) {
         Information.
       </p>
 
-      <h2 className="privacy-header"><LensIcon  fontSize="small" /> HOW DO WE USE YOUR PERSONAL INFORMATION <LensIcon  fontSize="small" /></h2>
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> HOW DO WE USE YOUR PERSONAL INFORMATION{" "}
+        <LensIcon fontSize="small" />
+      </h2>
 
       <p>
         We use the Order Information that we collect generally to fulfil any
@@ -56,7 +60,10 @@ function Privacy(props) {
         generally to improve and optimize our Site.
       </p>
 
-      <h2 className="privacy-header"><LensIcon  fontSize="small" /> SHARING YOUR PERSONAL INFORMATION <LensIcon  fontSize="small" /></h2>
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> SHARING YOUR PERSONAL INFORMATION{" "}
+        <LensIcon fontSize="small" />
+      </h2>
 
       <p>
         We share your Personal Information with third parties to help us use
@@ -68,7 +75,10 @@ function Privacy(props) {
         information we receive, or to otherwise protect our rights.
       </p>
 
-      <h2 className="privacy-header"><LensIcon  fontSize="small" /> BEHAVIOURAL ADVERTISING <LensIcon  fontSize="small" /></h2>
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> BEHAVIOURAL ADVERTISING{" "}
+        <LensIcon fontSize="small" />
+      </h2>
 
       <p>
         We use your Personal Information to provide you with targeted
@@ -77,7 +87,9 @@ function Privacy(props) {
         Google You can opt out of targeted advertising…
       </p>
 
-      <h2 className="privacy-header"><LensIcon  fontSize="small" /> YOUR RIGHTS <LensIcon  fontSize="small" /></h2>
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> YOUR RIGHTS <LensIcon fontSize="small" />
+      </h2>
 
       <p>
         If you are a European resident, you have the right to access the
@@ -92,7 +104,10 @@ function Privacy(props) {
         States.
       </p>
 
-      <h2 className="privacy-header"><LensIcon  fontSize="small" /> DATA RETENTION <LensIcon  fontSize="small" /></h2>
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> DATA RETENTION{" "}
+        <LensIcon fontSize="small" />
+      </h2>
 
       <p>
         When you place an order through the Site, we will maintain your Order
@@ -100,14 +115,18 @@ function Privacy(props) {
         information.
       </p>
 
-      <h2 className="privacy-header"><LensIcon  fontSize="small" /> MINORS <LensIcon  fontSize="small" /></h2>
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> MINORS <LensIcon fontSize="small" />
+      </h2>
 
       <p>
         The Site is not intended for individuals under the age of (CLEARLY
         MENTION AGE).
       </p>
 
-      <h2 className="privacy-header"><LensIcon  fontSize="small" /> CHANGES <LensIcon  fontSize="small" /></h2>
+      <h2 className="privacy-header">
+        <LensIcon fontSize="small" /> CHANGES <LensIcon fontSize="small" />
+      </h2>
 
       <p>
         We may update this privacy policy from time to time in order to reflect,
