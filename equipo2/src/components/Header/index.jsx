@@ -1,6 +1,10 @@
 import './component.css';
 import React, { useState } from "react";
-import { ShoppingCartRounded , MenuRounded, CloseRounded } from '@mui/icons-material';
+import {
+  Link
+  } from "react-router-dom";
+import { ShoppingCartRounded , MenuRounded, CloseRounded , } from '@mui/icons-material';
+import { Drawer } from '@mui/material';
 import webLogo from './logoFondoAzulRecortado.png';
 
 export default function Header() { 
@@ -22,7 +26,7 @@ export default function Header() {
             {routes.map((element, index) => 
             <div id={window.location.pathname === element.route ? 'active' : null}/*we use pathname to assign id*/
                 key={`category${index}`} >
-                <a href= {element.route}>{element.label}</a>
+                <Link to={element.route}>{element.label}</Link>
             </div>)}
       </div> 
     </div> 
