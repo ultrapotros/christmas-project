@@ -2,11 +2,12 @@
     bottom: 0;
     background-color:#23394d;
     width: 100%;
-    height: 11vh;
+    height: fit-content;
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );    
     align-items: center;
     justify-content: space-between;
+    padding: 2rem 0;
     row-gap: 1rem;
 }
 #nav {
@@ -17,16 +18,25 @@
 #social {
     width: 100%;
     display: flex;
-    gap: 15px;
     justify-content: flex-end;
     align-items: center;
 }
 #nav a, #social a {
-    font-size:1.2rem;
+    font-size:1 rem;
     text-decoration: none;
-    color: rgb(235, 176, 50);
+    color: #ebb032;
     text-transform: uppercase;
 }
 #social a:last-child {
     margin-right: 2rem;
+}
+#nav #active {
+    background-color: #ebb032;
+    color: #23394d;
+    border-radius:5px;
+    padding: 0.3rem;
+    padding-top: 0;
+}
+a:hover {
+    border-bottom: 3px solid #ebb032;
 }
