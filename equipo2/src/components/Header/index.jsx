@@ -135,7 +135,7 @@ export default function Header() {
                 {element.label}
               </div>
             ) : (
-              <Link to={element.route}>{element.label}</Link>
+              <a href={element.route}>{element.label}</a>
             )}
           </div>
         ))}
