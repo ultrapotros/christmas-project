@@ -18,6 +18,7 @@ import Cart from './components/Cart';
 import Privacy from './components/Privacy';
 import NotFoundPage from './components/NotFoundPage';
 import AboutUs from './components/AboutUs';
+import Faq from './components/Faq';
 
 
 export const Context = createContext(null);
@@ -64,6 +65,7 @@ function App() {
                   <Route path="/about-us" element={<AboutUs/>} />
                   <Route path="/privacy-policy" element={<Privacy />} />
                   <Route path="*" element={<NotFoundPage />} />
+                  <Route path="faq" element={<Faq />} />
                 </Routes>              
             </main>
             <Footer /> 
