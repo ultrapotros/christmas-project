@@ -1,10 +1,15 @@
 
 .AboutUsInfo{
     width: 80%;
-    margin-top: 5%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+#gmap_canvas{
+    margin: 15px;
+    width: 90%;
+    height: 500px;
+}
