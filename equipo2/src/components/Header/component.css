@@ -12,7 +12,7 @@
     width: 98%;
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .topHeader img {
@@ -21,12 +21,24 @@
     object-fit: cover;
 }
 
+.topHeader h1 {
+    background: linear-gradient(to left, #f3ec88, #ffc342, #eed295);
+    background-clip: text;
+    margin: 0;
+    font-size: 3rem;
+    background-size: 300% 300%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: transparent;
+    background-position: left;
+    animation: titleAnim 10s infinite;
+}
+
 #headerNav {
     width: 98%;
     height: 8vh;
     margin: auto auto 0 auto;
     display: grid;
-    grid-template-columns: repeat( 7, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     align-items: center;
     padding: 0.2rem;
 }
@@ -79,6 +91,10 @@
     color: #23394d;
 }
 
+.cart-button {
+    text-decoration: none;
+}
+
 @media screen and (max-width: 860px) {
     /* this media query allows us to change the top bar to a lateral one*/
     .showed {
@@ -116,6 +132,9 @@
         cursor: pointer;
         color: #ebb032;
         margin-right: 0.8rem;
+    }
+    .topHeader h1 {
+        font-size: 2rem;
     }
 }
 
@@ -161,19 +180,6 @@
 
 
 /*Logo animation*/
-
-.topHeader h1 {
-    text-align: center;
-    background: linear-gradient(to left, #f3ec88, #ffc342, #eed295);
-    background-clip: text;
-    margin: 0;
-    font-size: 3rem;
-    background-size: 300% 300%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: transparent;
-    background-position: left;
-    animation: titleAnim 10s infinite;
-}
 
 @keyframes titleAnim {
     0% {

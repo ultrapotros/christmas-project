@@ -77,7 +77,7 @@ export default function Header() {
         <Divider style={{ width: "100%" }} />
         <h4>{`TOTAL:  ${totalPrice.toFixed(2)}€`}</h4>
         <Divider style={{ width: "100%" }} />
-        <Link to="/cart">
+        <Link className="cart-button" to="/cart">
           <Button
             sx={{
               backgroundColor: "#ebb032",
