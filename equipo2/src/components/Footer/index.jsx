@@ -8,8 +8,9 @@ import './component.css';
  * @returns component react
  */
 function MyTabs() {
-  const routes = [{route:'/about-us', label: 'about-us'}, {route:"/faq", label: "faq"},
-   {route:"/privacy-policy", label: "privacy policy"}];
+  const routes = [{route:'/about-us', label: 'about-us'}, 
+      {route:"/faq", label: "faq"},
+      {route:"/privacy-policy", label: "privacy policy"}];
 
   return (
     <React.Fragment>
