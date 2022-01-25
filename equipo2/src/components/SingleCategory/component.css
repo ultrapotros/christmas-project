@@ -20,3 +20,13 @@
     object-fit: contain;
     margin: 15px;
 }
+
+@media only screen and (max-width: 800px) {
+    #ImageListItem{
+        width: 200px;
+    }
+    #ImageListItem > img {
+        height: 300px;
+        width: 180px;
+    }
+}

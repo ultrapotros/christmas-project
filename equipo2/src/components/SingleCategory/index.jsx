@@ -22,7 +22,7 @@ export default function SingleCategory() {
   /* Array [Object {id: number, tittle: string, price: number, description: string,
                   image: string(url), rating: {rate: number, rating: number} }] */
   const itemData = useContext(Context);
-  console.log(itemData);
+
   // we retrieve the category that we have to load. STRING.
   const { cat } = useParams();
 
