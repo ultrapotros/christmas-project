@@ -52,9 +52,7 @@
 }
 
 .cart-header:hover {
-    background-color: #ebb032;
-    color: #23394d;
-    box-shadow: 2px 1px 5px #ebb13225;
+    border-bottom: 3px solid #ebb032;
     cursor: pointer;
 }
 

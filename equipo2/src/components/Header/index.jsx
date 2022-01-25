@@ -77,7 +77,7 @@ export default function Header() {
         <Divider style={{ width: "100%" }} />
         <h4>{`TOTAL:  ${totalPrice.toFixed(2)}€`}</h4>
         <Divider style={{ width: "100%" }} />
-        <Link className="modal-button" to="/cart">
+        <Link to="/cart">
           <Button
             sx={{
               backgroundColor: "#ebb032",
@@ -104,6 +104,7 @@ export default function Header() {
   //Function that takes care of opening the drawer when clicking on the cart option.
   function toggleDrawer() {
     setDrawerOpen(!drawerOpen);
+    setShowMobileMenu(false);
   }
 
   return (
