@@ -1,0 +1,15 @@
+.NotFoundPage > img {
+    object-fit: contain;
+    width: 80%;
+    margin: auto; 
+    display: block;
+}
+
+.NotFoundPage > p {
+    text-align: center;
+}
+
+.NotFoundPage > p > a {
+    color: #ebb032; 
+    font-size: x-large;
+}
