@@ -1,5 +1,4 @@
 import React from "react";
-import { Divider } from "@mui/material";
 import LensIcon from "@mui/icons-material/Lens";
 import "./component.css";
 
