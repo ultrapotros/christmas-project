@@ -18,6 +18,7 @@ import Cart from './components/Cart';
 import Privacy from './components/Privacy';
 import NotFoundPage from './components/NotFoundPage';
 import AboutUs from './components/AboutUs';
+import Faq from './components/Faq';
 
 
 export const Context = createContext(null);
@@ -44,6 +45,7 @@ function App() {
         setCart(cartLocal);
       }
     }
+
     fetchApi();
     checkCart();
   }, []);
@@ -54,15 +56,18 @@ function App() {
         <Context.Provider value={products}>
           <div className="App">
             <Header />
-            <Routes >
-              <Route path="/" element={<HomePage />} />
-              <Route path="/single-category/:cat" element={<SingleCategory />} />
-              <Route path="/single-product/:id" element={<SingleProduct />} />
-              <Route path="/cart" element={<Cart />} />
-			  <Route path="/about-us" element={<AboutUs/>} />
-              <Route path="/privacy-policy" element={<Privacy />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Routes>
+            <main>
+                <Routes >
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/single-category/:cat" element={<SingleCategory />} />
+                  <Route path="/single-product/:id" element={<SingleProduct />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/about-us" element={<AboutUs/>} />
+                  <Route path="/privacy-policy" element={<Privacy />} />
+                  <Route path="*" element={<NotFoundPage />} />
+                  <Route path="faq" element={<Faq />} />
+                </Routes>              
+            </main>
             <Footer /> 
           </div>
         </Context.Provider>
