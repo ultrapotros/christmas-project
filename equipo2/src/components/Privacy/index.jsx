@@ -1,8 +1,14 @@
 import React from "react";
 import LensIcon from "@mui/icons-material/Lens";
+
 import "./component.css";
 
-function Privacy(props) {
+
+/**
+ * Component of privacy policies
+ * @returns component react
+ */
+function Privacy() {
   return (
     <div className="privacy">
       <h1 className="privacy-header">Privacy Policy</h1>
