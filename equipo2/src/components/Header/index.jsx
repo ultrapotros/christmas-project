@@ -110,7 +110,7 @@ export default function Header() {
   return (
     <div className="header">
       <div className="topHeader">
-        <img src={webLogo} alt="logo" />
+        <h1>THE BRIDGE STORE</h1>
         <div
           className="mobileIcon"
           onClick={() => setShowMobileMenu(!showMobileMenu)}
