@@ -18,8 +18,8 @@ export default function Header() {
         {route:"/single-category/electronics", label: 'electronics'}, 
         {route:'/about-us', label: 'about-us'}, 
         {route:'/cart', label: <ShoppingCartRounded />}];
-
-    const [showMobileMenu, setShowMobileMenu] = useState(false); /* we assign false as first value */
+    /* we assign false as first value */
+    const [showMobileMenu, setShowMobileMenu] = useState(false); 
 
   return (
       <div className="header">
