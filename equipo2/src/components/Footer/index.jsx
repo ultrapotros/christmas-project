@@ -8,7 +8,11 @@ function MyTabs() {
   return (
   <React.Fragment>
       <div  id= "nav">
-          {routes.map((element, index) => <a href= {element.route} key={`bottomnav${index}`}>{element.label}</a>)}
+      {routes.map((element, index) => 
+            <div id={window.location.pathname === element.route ? 'active' : null}/*we use pathname to assign id*/
+                key={`bottomnav${index}`} >
+                <a href= {element.route}>{element.label}</a>
+            </div>)}
       </div>
   </React.Fragment>
   );
@@ -20,7 +24,11 @@ function SocialMedia() {
   {route:"https://twitter.com/", label: <Twitter/>}];
   return (<React.Fragment>
       <div  id= "social"> 
-          {routes.map((element, index) => <a href= {element.route} target='_blank' key={`social${index}`}>{element.label}</a>)}
+      {routes.map((element, index) => 
+            <div id={window.location.pathname === element.route ? 'active' : null}/*we use pathname to assign id*/
+                key={`social${index}`} >
+                <a href= {element.route}>{element.label}</a>
+            </div>)}
       </div>
   </React.Fragment>
   );
