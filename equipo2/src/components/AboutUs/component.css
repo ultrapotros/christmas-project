@@ -1,10 +1,36 @@
 
+
+.AboutUs{
+    margin: auto;
+}
+
 .AboutUsInfo{
     width: 80%;
-    margin-top: 5%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.AboutUsInfo > p {
+    color:#23394d;
+    font-size:large;
+}
+
+.AboutUsInfo > a {
+    text-align: center; 
+    text-decoration: none;
+    color: #ebb032; 
+    font-size: large;
+}
+
+.gmap_canvas{
+    margin: auto ;
+}
+
+#gmap_canvas{
+    margin: 15px;
+    width: 90%;
+    height: 500px;
+}
