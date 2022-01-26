@@ -8,17 +8,24 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import Rating from '@mui/material/Rating';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { CircularProgress, Skeleton, Box } from '@mui/material';
 
-
+/**
+ * Component for loading all products of a category
+ * @returns component react
+ */
 export default function SingleCategory() {
-  
+  //we recover the products
+  /* Array [Object {id: number, tittle: string, price: number, description: string,
+                  image: string(url), rating: {rate: number, rating: number} }] */
   const itemData = useContext(Context);
+
+  // we retrieve the category that we have to load. STRING.
   const { cat } = useParams();
+
   const [categoryItems, setCategoryItems] = useState([]);
   const [orderBy, setOrderBy] = useState();
 
@@ -41,11 +48,13 @@ export default function SingleCategory() {
           flexWrap: 'wrap',
           justifyContent: 'center',
           alignItems: 'center',  
-          color: '#1976d2'}}
-        > Order by 
-        <FormLabel component="legend"></FormLabel>
-        <ButtonGroup variant="text" aria-label="outlined primary button group">
-          <Button onClick={() => {
+          color: '#ebb032',
+          fontSize: 34,
+          margin: '15px',
+          padding: '5px'}}
+        >  Order by 
+        <ButtonGroup variant="text" aria-label="outlined primary button group" >
+          <Button sx={{ color: '#ebb032' }} onClick={() => {
             categoryItems.sort((a,b) => {if (a.price > b.price) {
                 return 1; 
               } else if (b.price > a.price) {
@@ -58,7 +67,7 @@ export default function SingleCategory() {
             setOrderBy('maxPrice');
           }}>
            Increasing price </Button>
-          <Button onClick={() => {
+          <Button sx={{ color: '#ebb032' }} onClick={() => {
             categoryItems.sort((a,b) => {if (a.price > b.price) {
               return -1; 
             } else if (b.price > a.price) {
@@ -71,7 +80,7 @@ export default function SingleCategory() {
             setOrderBy('minPrice');
           }}>
             Decreasing price </Button>
-          <Button onClick={() => {
+          <Button sx={{ color: '#ebb032' }} onClick={() => {
             categoryItems.sort((a,b) => {if (a.rating.rate > b.rating.rate) {
                 return -1; 
               } else if (b.rating.rate > a.rating.rate) {
@@ -100,7 +109,7 @@ export default function SingleCategory() {
         sx={{p: '15px',
           display: 'flex',
           flexWrap: 'wrap',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
           alignItems: 'stretch',
         }}
         >
@@ -115,7 +124,8 @@ export default function SingleCategory() {
               alt={item.title}
               loading="lazy"
             />
-            <ImageListItemBar
+            <ImageListItemBar 
+              sx={{ color: '#ebb032' }}
               title={item.title}
               subtitle={<>
                 <p>Price: {item.price} € </p>
