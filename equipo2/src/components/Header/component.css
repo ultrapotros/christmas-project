@@ -4,7 +4,9 @@
     margin: 0 auto;
     background-color: #23394d;
     padding-bottom: 0.2rem;
+    padding-top: 2rem;
 }
+
 .topHeader {
     height: 10vh;
     width: 98%;
@@ -12,87 +14,181 @@
     display: flex;
     justify-content: space-between;
 }
+
 .topHeader img {
-    height:100%;
+    height: 100%;
     max-height: fit-content;
     object-fit: cover;
 }
+
+.topHeader h1 {
+    background: linear-gradient(to left, #f3ec88, #ffc342, #eed295);
+    background-clip: text;
+    margin: 0;
+    font-size: 3rem;
+    background-size: 300% 300%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    color: transparent;
+    background-position: left;
+    animation: titleAnim 10s infinite;
+}
+
 #headerNav {
     width: 98%;
     height: 8vh;
     margin: auto auto 0 auto;
     display: grid;
-    grid-template-columns: repeat( 7, 1fr);
+    grid-template-columns: repeat(7, 1fr);
     align-items: center;
     padding: 0.2rem;
 }
+
 #headerNav div {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 95%;
     align-items: center;
-  }
-.header a {
+}
+
+.header a,
+.cart-header {
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
     color: #ebb032;
     width: fit-content;
 }
+
 #headerNav a:hover {
     border-bottom: 3px solid #ebb032;
 }
+
+.cart-header:hover {
+    border-bottom: 3px solid #ebb032;
+    cursor: pointer;
+}
+
 #headerNav svg {
     max-height: max-content;
 }
+
 .mobileIcon {
     display: none;
 }
+
 #active {
     background-color: #ebb032;
     border-radius: 5px;
 }
+
 #active a:hover {
     border-bottom: 3px solid #23394d;
 }
-  #active a {
+
+#active a,
+#active .cart-header {
     color: #23394d;
 }
-@media screen and (max-width: 860px) { /* this media query allows us to change the top bar to a lateral one*/
-  .showed {
-      transform: translateX(100%) ; /* this class hide the lateral nav*/
-  }
-  #headerNav, #headerNav div, .mobileIcon {
-      display: flex;
-      align-items: center;
-  } 
-  #headerNav {
-      background-color: #23394d;
-      position: absolute;
-      top: 25vh;
-      width: 50%;
-      margin-left: 45%;
-      height: 50vh;
-      flex-direction: column;
-      left: -100%;
-      transition: 0.5s all ease;   
-      z-index: 2;
-      border-radius: 0 10px 10px 0;
-      padding: 1rem 0.2rem;
-  }
-  #headerNav div {
-      row-gap: 2vh;
-      padding: 0 0.8rem;
-  }
-  .showed a {
-      color: #ebb032;
-  }
-  .mobileIcon { 
-      cursor: pointer;
-      color: #ebb032;
-      margin-right: 0.8rem;
+
+.cart-button {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 860px) {
+    /* this media query allows us to change the top bar to a lateral one*/
+    .showed {
+        transform: translateX(100%);
+        /* this class hide the lateral nav*/
+    }
+    #headerNav,
+    #headerNav div,
+    .mobileIcon {
+        display: flex;
+        align-items: center;
+    }
+    #headerNav {
+        background-color: #23394d;
+        position: absolute;
+        top: 25vh;
+        width: 50%;
+        margin-left: 45%;
+        height: 50vh;
+        flex-direction: column;
+        left: -100%;
+        transition: 0.5s all ease;
+        z-index: 2;
+        border-radius: 0 10px 10px 0;
+        padding: 1rem 0.2rem;
+    }
+    #headerNav div {
+        row-gap: 2vh;
+        padding: 0 0.8rem;
+    }
+    .showed a {
+        color: #ebb032;
+    }
+    .mobileIcon {
+        cursor: pointer;
+        color: #ebb032;
+        margin-right: 0.8rem;
+    }
+    .topHeader h1 {
+        font-size: 2rem;
     }
 }
-  
 
+.drawer-cart {
+    text-align: center;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-cart>h4 {
+    text-align: right;
+    padding-right: 2rem;
+}
+
+.drawer-item {
+    display: flex;
+    padding: 1rem;
+    justify-content: space-evenly;
+}
+
+.drawer-item>section {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.drawer-item>section>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.drawer-item>section>h5 {
+    text-align: right;
+}
+
+.drawer-item>img {
+    width: 5rem;
+    border: 2px solid #ebb032;
+    opacity: 0.7;
+    border-radius: 5px;
+}
+
+
+/*Logo animation*/
+
+@keyframes titleAnim {
+    0% {
+        background-position: left;
+    }
+    50% {
+        background-position: right;
+    }
+    100% {
+        background-position: left;
+    }
+}
