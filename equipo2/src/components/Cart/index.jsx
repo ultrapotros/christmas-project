@@ -1,5 +1,4 @@
-import "./component.css";
-import { Context, CartContext } from "../../App";
+
 import React, { useState, useEffect, useContext } from "react";
 import {
   Divider,
@@ -18,19 +17,26 @@ import {
   DialogContent
 } from "@mui/material";
 import MuiAlert from "@mui/material/Alert";
-import { makeStyles } from '@mui/styles';
 import DeleteIcon from "@mui/icons-material/Delete";
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore"
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
-
 import { Link } from "react-router-dom";
+
+import "./component.css";
+import { Context, CartContext } from "../../App";
+
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-//Subcomponent to show list of cart items
+
+/**
+ * Subcomponent to show list of cart items
+ * @param cartData
+ * @returns component react
+ */
 function ListItems(props) {
   //Cart context state created in app.js
   const { cart, setCart } = useContext(CartContext);
@@ -38,7 +44,12 @@ function ListItems(props) {
   const [open, setOpen] = useState(false);
   //Modified string of the article title deleted.
   const [lastItem, setLastItem] = useState("");
-  //When the value of the select changes we modify cart both in local and in localStorage
+
+  /**
+   * When the value of the select changes we 
+   * modify cart both in local and in localStorage
+   * @param event
+   */
   function handleChange(e) {
     let tempArray = [];
     //We retrieve the id from the select's name property
@@ -61,6 +72,11 @@ function ListItems(props) {
     window.localStorage.setItem("cart", JSON.stringify(tempArray));
   }
 
+
+  /**
+   * Handler to remove a product from the cart
+   * @param event
+   */
   function handleDelete(e) {
     let tempArray = [];
     
@@ -77,6 +93,7 @@ function ListItems(props) {
     setCart(tempArray);
     window.localStorage.setItem("cart", JSON.stringify(tempArray));
   }
+
   const cartData = props.data;
   const options = [];
   //Creation of options for select
@@ -87,6 +104,7 @@ function ListItems(props) {
       </MenuItem>
     );
   }
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return;
@@ -154,7 +172,12 @@ function ListItems(props) {
   );
 }
 
-//Subcomponent to show payment related options
+
+/**
+ * Subcomponent to show payment related options
+ * @param cartData
+ * @returns component react
+ */
 function Payments(props) {
   const [totalPrice, setTotalPrice] = useState(0);
   useEffect(() => {
@@ -163,11 +186,8 @@ function Payments(props) {
     setTotalPrice(tempPrice);
   }, [props]);
   return (
-    <>
-    
-      
     <div className="payments">
-    <Accordion >
+      <Accordion >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon sx={{
             color:"#ebb032"
@@ -179,7 +199,7 @@ function Payments(props) {
               color: "#ebb032"
           }}
         >
-          <Typography>Resume</Typography>
+          <Typography> Resume </Typography>
         </AccordionSummary>
         <AccordionDetails sx={{
             backgroundColor: "#23394d",
@@ -198,29 +218,34 @@ function Payments(props) {
         );
       })}
         </AccordionDetails>
-      
-      <Divider />
-      
+        <Divider />
       </Accordion>
+
       <Divider />
       <div className="total-price">
         <h3>TOTAL : </h3>
         <h3>{totalPrice.toFixed(2)}€</h3>
       </div>
-
       <Purchase />
     </div>
-    </>
   );
 }
 
+/**
+ * Component for loading a cart
+ * @returns component react
+ */
 function Cart() {
+  /* Array [Object {id: number, tittle: string, price: number, description: string,
+                  image: string(url), rating: {rate: number, rating: number} }] */
   const context = useContext(Context);
+
   const { cart } = useContext(CartContext);
+
   //We fetch all the neccesary data from the context to cartData
   const [cartData, setCartData] = useState([]);
+
   //We load the data from cart items
-  //Me falta darle unas vueltas a como optimizar el sacar datos porque se ve infernal xd
   useEffect(() => {
     function fetchData() {
       let tempArray = [];
@@ -235,25 +260,28 @@ function Cart() {
     }
     fetchData();
   }, [cart,context]);
+
   return (
-    <>
-      <div className="cart">
-        {cartData.length > 0 ? (
-          <>
-            <ListItems data={cartData} />
-            <Payments data={cartData} />
-          </>
-        ) : (
-          <div className="empty-cart">
-            <RemoveShoppingCartIcon color="disabled"  sx={{ fontSize: 250 }} />
-            <h2>Cart is empty!</h2>
-          </div>
-        )}
-      </div>
-    </>
+    <div className="cart">
+      {cartData.length > 0 ? (
+        <>
+          <ListItems data={cartData} />
+          <Payments data={cartData} />
+        </>
+      ) : (
+        <div className="empty-cart">
+          <RemoveShoppingCartIcon color="disabled" sx={{ fontSize: 250 }} />
+          <h2>Cart is empty!</h2>
+        </div>
+      )}
+    </div>
   );
 }
 
+/**
+ * Component for purchase
+ * @returns component react
+ */
 function Purchase() {
   const { cart, setCart } = useContext(CartContext);
   const [openModal, setOpenModal] = useState(false);
