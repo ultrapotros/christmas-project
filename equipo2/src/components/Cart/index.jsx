@@ -63,11 +63,12 @@ function ListItems(props) {
 
   function handleDelete(e) {
     let tempArray = [];
-
+    
     cart.map((d) => {
-      if (d.id !== parseInt(e.target.name)) {
+      if (parseInt(d.id) !== parseInt(e.target.name)) {
         tempArray.push(d);
       } else {
+        
         setLastItem(d.title);
         setOpen(true);
       }
