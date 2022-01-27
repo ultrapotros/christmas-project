@@ -39,7 +39,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   borderTop: '1px solid rgba(0, 0, 0, .125)',
 }));
 
-
+/**
+ * Component FAQ
+ * @returns component react
+ */
 export default function CustomizedAccordions() {
   const [expanded, setExpanded] = React.useState();
 

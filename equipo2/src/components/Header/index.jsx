@@ -10,7 +10,6 @@ import { Drawer, Divider, Button } from "@mui/material";
 
 import { Context, CartContext } from "../../App";
 import "./component.css";
-import webLogo from "./logoFondoAzulRecortado.png";
 
 
 /**
