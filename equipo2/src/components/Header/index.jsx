@@ -8,7 +8,6 @@ import {
 } from "@mui/icons-material";
 import { Context, CartContext } from "../../App";
 import { Drawer, Divider, Button } from "@mui/material";
-import webLogo from "./logoFondoAzulRecortado.png";
 
 export default function Header() {
   const routes = [
@@ -110,7 +109,7 @@ export default function Header() {
   return (
     <div className="header">
       <div className="topHeader">
-        <h1>THE BRIDGE STORE</h1>
+        <a href='/'><h1>THE BRIDGE STORE</h1></a>
         <div
           className="mobileIcon"
           onClick={() => setShowMobileMenu(!showMobileMenu)}
