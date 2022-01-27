@@ -1,5 +1,4 @@
-import "./component.css";
-import { Context, CartContext } from "../../App";
+
 import ReactImageMagnify from "react-image-magnify";
 import React, { useState, useContext, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
@@ -20,10 +19,18 @@ import {
 import MuiAlert from "@mui/material/Alert";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 
+import "./component.css";
+import { Context, CartContext } from "../../App";
+
+
 const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
+/**
+ * Component for loading a product
+ * @returns component react
+ */
 function SingleProduct() {
   //Retrieve id from the URL
   const { id } = useParams();
@@ -77,7 +84,8 @@ function SingleProduct() {
     checkRating();
   }, [id]);
 
-//In case localRating is modified, if the value is greater than -1 ( meaning that it has a vote ) we show the toolTip
+//In case localRating is modified, if the value is greater than -1 
+// ( meaning that it has a vote ) we show the toolTip
  useEffect(() => {
     if (localRating > -1) {
       let dataLocal = JSON.parse(window.localStorage.getItem("rating"));
@@ -97,12 +105,16 @@ function SingleProduct() {
     }
     setOpen(false);
   };
+
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
   //There are times when the component is mounted without the context with data arriving.
   const isData = productData !== undefined;
-  //We render in case we have data already loaded. In case of no data, circular load is displayed.
+
+  //We render in case we have data already loaded. In case of no data, 
+  //circular load is displayed.
   if (isData) {
     const { title, image, price, description, rating } = productData;
     //Function to handle addToCart
@@ -117,16 +129,16 @@ function SingleProduct() {
           tempCart[index].qty++;
         }
       }
-      //If the product exists, +1 has already been added to qty, so the new cart is assigned to the state.
+
+      //If the product exists, +1 has already been added to qty, 
+      //so the new cart is assigned to the state.
       if (exists) {
         setCart(tempCart);
-        
-
       } else {
-        //In case the item does not exist, we add the already existing items and the new item to the cart
+        //In case the item does not exist, we add the already 
+        //existing items and the new item to the cart
         tempCart = [...cart, { id: id, title: title, qty: 1 }];
         setCart(tempCart);
-
       }
       window.localStorage.setItem("cart", JSON.stringify(tempCart));
 
@@ -134,10 +146,12 @@ function SingleProduct() {
       setOpen(true);
       setOpenModal(true);
     }
+
     function handleHover(event, newHover) {
       //Function that takes care of updating the rating on hover
       setHover(newHover);
     }
+
     const ratingProps = {
       readOnly: true,
       onChangeActive: ()=>{},
@@ -153,7 +167,8 @@ function SingleProduct() {
       <div className="single-product">
         <div className="left-side">
           {/*ReactImageMagnify takes as props smallImage to
-          define the default image displayed and largeImage to define how the zoomed area will appear. */}
+          define the default image displayed and largeImage to define how 
+          the zoomed area will appear. */}
           <ReactImageMagnify
             {...{
               smallImage: {
@@ -202,7 +217,7 @@ function SingleProduct() {
           </div>
 
           <Divider />
-          <p>{description}</p>
+          <p> {description} </p>
           <Divider />
           <div className="buy-options">
             <Button
@@ -247,12 +262,11 @@ function SingleProduct() {
                     sx={{
                       backgroundColor: "#ebb032",
                       color: "#23394d",
-                      borderColor:"#ebb032",
-                      
-                  }}
+                      borderColor:"#ebb032",   
+                    }}
                     variant="outlined"
                     onClick={handleCloseModal}
-                  >
+                    >
                     Go to the cart
                   </Button>
                 </Link>
@@ -261,11 +275,10 @@ function SingleProduct() {
                   sx={{
                     borderColor:"#ebb032",
                     color: "#ebb032",
-                    marginLeft:"2px"
-                    
-                }}
+                    marginLeft:"2px" 
+                  }}
                   onClick={() => navigate(-1)}
-                >
+                  >
                   Continue shoping...
                 </Button>
               </DialogActions>
