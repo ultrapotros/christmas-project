@@ -55,7 +55,7 @@ function ListItems(props) {
     //We retrieve the id from the select's name property
     cart.map((d) => {
       //When the element is found, we create the element with the new quantity.
-      if (d.id === parseInt(e.target.name)) {
+      if(parseInt(d.id) === parseInt(e.target.name)) {
         //If 0 is entered in the select, the item is deleted.
         if (e.target.value !== 0) {
           tempArray.push({ id: d.id, title: d.title, qty: e.target.value });
@@ -79,11 +79,12 @@ function ListItems(props) {
    */
   function handleDelete(e) {
     let tempArray = [];
-
+    
     cart.map((d) => {
-      if (d.id !== parseInt(e.target.name)) {
+      if (parseInt(d.id) !== parseInt(e.target.name)) {
         tempArray.push(d);
       } else {
+        
         setLastItem(d.title);
         setOpen(true);
       }
@@ -188,26 +189,34 @@ function Payments(props) {
     <div className="payments">
       <Accordion >
         <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
+          expandIcon={<ExpandMoreIcon sx={{
+            color:"#ebb032"
+          }}/>}
           aria-controls="panel1a-content"
           id="panel1a-header"
+          sx={{
+            backgroundColor: "#23394d",
+              color: "#ebb032"
+          }}
         >
           <Typography> Resume </Typography>
         </AccordionSummary>
-
-        <AccordionDetails>
-          {props.data.map((e) => {
-            let warpedTitle = "";
-            warpedTitle = e.title.substring(0, 20);
-            warpedTitle += "...";
-            return (
-              <div className="resume-item" key={e.id}>
-                <p>{warpedTitle}</p>
-                <p className="resume-qty"> x {e.qty}</p>
-                <p className="resume-price">{e.price * e.qty}€</p>
-              </div>
-            );
-          })}
+        <AccordionDetails sx={{
+            backgroundColor: "#23394d",
+              color: "#ebb032"
+          }}>
+        {props.data.map((e) => {
+        let warpedTitle = "";
+        warpedTitle = e.title.substring(0, 20);
+        warpedTitle += "...";
+        return (
+          <div className="resume-item" key={e.id}>
+            <p>{warpedTitle}</p>
+            <p className="resume-qty"> x {e.qty}</p>
+            <p className="resume-price">{e.price * e.qty}€</p>
+          </div>
+        );
+      })}
         </AccordionDetails>
         <Divider />
       </Accordion>
@@ -293,22 +302,38 @@ function Purchase() {
   return (
     <div className="purchase">
       <Button
-        variant="contained"
-        size="large"
-        name="Purchase"
-        onClick={() =>{
-          setOpenModal(true);
+          variant="contained"
+          size="large"
+          name="Purchase"
+          onClick={() =>{
+            setOpenModal(true);
+          }}
+          sx={{
+            backgroundColor: "#ebb032",
+            color: "#23394d",
+            borderColor:"#ebb032",
+            width: "100%"
+            
         }}
-        startIcon={<MonetizationOnIcon />}
+          startIcon={<MonetizationOnIcon />}
         >
-        Purchase
-      </Button>
-      <Dialog open={openModal} onClose={handleCloseModal} >
-        <DialogTitle> Thanks for your purchase! </DialogTitle>
-        <DialogContent>
-          {resumenBuy}
-        </DialogContent>
-      </Dialog>
+          Purchase
+        </Button>
+        <Dialog open={openModal} onClose={handleCloseModal} sx={{
+            backgroundColor: "#23394d",
+           
+          }}>
+          <DialogTitle sx={{
+            backgroundColor: "#23394d",
+              color: "#ebb032"
+          }}>Thanks for your purchase!</DialogTitle>
+          <DialogContent sx={{
+            backgroundColor: "#23394d",
+              color: "#ebb032"
+          }}>
+            {resumenBuy}
+          </DialogContent>
+        </Dialog>
     </div>
   ); 
 }

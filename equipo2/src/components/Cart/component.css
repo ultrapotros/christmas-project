@@ -1,13 +1,29 @@
 .cart {
     display: flex;
-    width: 80%;
     justify-content: space-between;
+    width: 90%;
 }
 
 .list-items {
     display: flex;
     flex-flow: column;
-    width: 80%;
+}
+
+.list-items>h2 {
+    font-size: 3.2rem;
+    color: #23394d;
+}
+
+.list-items>h2::after {
+    content: "";
+    background-color: #ebb032;
+    position: absolute;
+    width: 15rem;
+    height: 1.5rem;
+    margin-top: 1.9rem;
+    left: 90px;
+    opacity: 0.7;
+    z-index: -1;
 }
 
 .cart-item {
@@ -18,7 +34,7 @@
 }
 
 .cart-item>img {
-    width: 110px;
+    width: 150px;
 }
 
 .cart-item-details {
