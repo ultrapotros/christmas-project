@@ -123,8 +123,8 @@ function SingleProduct() {
   };
 
   //There are times when the component is mounted without the context with data arriving.
-  const isData = productData !== undefined;
-
+  let isData = productData !== undefined;
+  isData = false;
   //We render in case we have data already loaded. In case of no data, 
   //circular load is displayed.
   if (isData) {
@@ -303,11 +303,9 @@ function SingleProduct() {
     //Structure while loading data
     return (
       <>
-        <Box sx={{ width: 40 }}>
+        <Box sx={{ width:"50px",
+          margin: "150px auto"}}>
           <CircularProgress />
-          <Skeleton animation="wave" />
-          <Skeleton animation="wave" />
-          <Skeleton animation="wave" />
         </Box>
       </>
     );
