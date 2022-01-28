@@ -117,17 +117,19 @@ export default function Header() {
         setShowMobileMenu(false);
     }
 
-    return (
-        <div className="header">
-        <div className="topHeader">
-            <h1>THE BRIDGE STORE</h1>
-            <div className="mobileIcon"
-                onClick={() => setShowMobileMenu(!showMobileMenu)}>
-                {" "}
-                {/* onclick we change the value of showMobileMenu */}
-                {showMobileMenu ? <CloseRounded /> : <MenuRounded />}{" "}
-                {/* we use showMobileMenu to choose the icon to show */}
-            </div>
+  return (
+    <div className="header">
+      <div className="topHeader">
+        <a href='/'><h1>THE BRIDGE STORE</h1></a>
+        <div
+          className="mobileIcon"
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+        >
+          {" "}
+          {/* onclick we change the value of showMobileMenu */}
+          {showMobileMenu ? <CloseRounded /> : <MenuRounded />}{" "}
+          {/* we use showMobileMenu to choose the icon to show */}
+        </div>
         </div>
         <div id="headerNav" className={showMobileMenu ? "showed" : null}>
             {" "}
