@@ -213,14 +213,14 @@ function SingleProduct() {
                   onChange={(event, newValue) => {
                     setLocalRating(newValue);
                   }}
-                  size="small"
+                  size="large"
                   onChangeActive={handleHover}
                   {...(localRating > -1 ? ratingProps : "")}
                 />
-                <small>
-                  {" "}
-                  {rating.rate} ({rating.count})
-                </small>
+                <p>
+                  {`${rating.rate} (${rating.count})`}
+                  
+                </p>
                 {rating !== null && (
                   <Box>{labels[hover !== -1 ? hover : null]}</Box>
                 )}
@@ -229,7 +229,7 @@ function SingleProduct() {
           </div>
 
           <Divider />
-          <p> {description} </p>
+          <p className="single-product-p"> {description} </p>
           <Divider />
           <div className="buy-options">
             <Button

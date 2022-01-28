@@ -1,10 +1,8 @@
-
-
-.AboutUs{
+.AboutUs {
     margin: auto;
 }
 
-.AboutUsInfo{
+.AboutUsInfo {
     width: 80%;
     margin: auto;
     display: flex;
@@ -13,24 +11,24 @@
     align-items: center;
 }
 
-.AboutUsInfo > p {
-    color:#23394d;
-    font-size:large;
-}
-
-.AboutUsInfo > a {
-    text-align: center; 
-    text-decoration: none;
-    color: #ebb032; 
+.AboutUsInfo>p {
+    color: #23394d;
     font-size: large;
 }
 
-.gmap_canvas{
-    margin: auto ;
+.AboutUsInfo>a {
+    text-align: center;
+    text-decoration: none;
+    color: #ebb032;
+    font-size: large;
 }
 
-#gmap_canvas{
-    margin: 15px;
-    width: 90%;
+.gmap_canvas {
+    display: flex;
+    justify-content: center;
+}
+
+#gmap_canvas {
+    width: 50%;
     height: 500px;
 }
