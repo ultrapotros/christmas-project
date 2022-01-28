@@ -1,36 +1,7 @@
-:root {
-    --main: #23394d;
-    --secondary: #ebb032;
+#privacy-container {
+    width: 80%;
+    margin: 2rem auto;
 }
-
-.privacy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.privacy>p {
-    font-size: 1.8rem;
-    padding: 0 13rem 5rem 13rem;
-}
-
-.privacy-header {
-    background-color: var(--main);
-    color: var(--secondary);
-    margin-top: 0;
-    padding: 50px 0;
-    width: 100%;
-    text-align: center;
-    height: 3rem;
-}
-
-@media only screen and (max-width: 800px) {
-    .privacy-header {
-        padding: 50px 2rem;
-    }
-    .privacy>p {
-        padding: 0 3rem;
-        font-size: 1.5rem;
-    }
+#privacy-container h2 {
+    font-size: clamp(2rem, 5vw + 1rem, 4rem);
 }

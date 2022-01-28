@@ -4,9 +4,12 @@
     align-items: center;
     min-height: 100vh;
 }
+
 body {
     margin: 0;
 }
+
 main {
     min-height: 70vh;
+    width: 100%;
 }
