@@ -2,6 +2,8 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
+    margin: 0px auto;
+    margin-bottom: 100px;
 }
 
 .list-items {
@@ -44,6 +46,11 @@
     flex-flow: column;
     justify-content: center;
     align-items: flex-start;
+}
+
+.cart-item-details>a>p {
+    font-size: clamp(1.5rem, 2.5vh, 4em);
+    color: #23394d;
 }
 
 .payments {
@@ -93,4 +100,14 @@
     width: 100%;
     margin-top: 20px;
     margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .cart {
+        flex-wrap: wrap;
+    }
+    .payments {
+        margin-left: 0px;
+        width: 100%;
+    }
 }

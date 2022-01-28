@@ -87,13 +87,10 @@ export default function HomePage() {
     } else {
         // Structure while loading data
         return( <>
-            <Box sx={{ width: 40 }}>
-                <CircularProgress />
-              
-                <Skeleton animation="wave" />
-                <Skeleton animation="wave" />
-                <Skeleton animation="wave" />
-            </Box>
+             <Box sx={{ width:"50px",
+          margin: "150px auto"}}>
+          <CircularProgress />
+        </Box>
         </>);
     }
 };

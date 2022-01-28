@@ -124,7 +124,6 @@ function SingleProduct() {
 
   //There are times when the component is mounted without the context with data arriving.
   const isData = productData !== undefined;
-
   //We render in case we have data already loaded. In case of no data, 
   //circular load is displayed.
   if (isData) {
@@ -213,14 +212,14 @@ function SingleProduct() {
                   onChange={(event, newValue) => {
                     setLocalRating(newValue);
                   }}
-                  size="small"
+                  size="large"
                   onChangeActive={handleHover}
                   {...(localRating > -1 ? ratingProps : "")}
                 />
-                <small>
-                  {" "}
-                  {rating.rate} ({rating.count})
-                </small>
+                <p>
+                  {`${rating.rate} (${rating.count})`}
+                  
+                </p>
                 {rating !== null && (
                   <Box>{labels[hover !== -1 ? hover : null]}</Box>
                 )}
@@ -229,7 +228,7 @@ function SingleProduct() {
           </div>
 
           <Divider />
-          <p> {description} </p>
+          <p className="single-product-p"> {description} </p>
           <Divider />
           <div className="buy-options">
             <Button
@@ -269,7 +268,7 @@ function SingleProduct() {
                 </div>
               </DialogContent>
               <DialogActions>
-                <Link className="modal-button" to="/cart">
+                <a className="modal-button" href="/cart">
                   <Button
                     sx={{
                       backgroundColor: "#ebb032",
@@ -281,7 +280,7 @@ function SingleProduct() {
                     >
                     Go to the cart
                   </Button>
-                </Link>
+                </a>
                 <Button
                   variant="outlined"
                   sx={{
@@ -303,11 +302,9 @@ function SingleProduct() {
     //Structure while loading data
     return (
       <>
-        <Box sx={{ width: 40 }}>
+        <Box sx={{ width:"50px",
+          margin: "150px auto"}}>
           <CircularProgress />
-          <Skeleton animation="wave" />
-          <Skeleton animation="wave" />
-          <Skeleton animation="wave" />
         </Box>
       </>
     );

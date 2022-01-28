@@ -1,10 +1,9 @@
-
 #SingleCategory {
     margin-left: 80px;
     margin-right: 100px;
 }
 
-#ImageListItem{
+#ImageListItem {
     margin: 2%;
     width: 300px;
     border: 1px;
@@ -14,7 +13,7 @@
     text-decoration: none;
 }
 
-#ImageListItem > img {
+#ImageListItem>img {
     height: 600px;
     width: 250px;
     object-fit: contain;
@@ -22,10 +21,10 @@
 }
 
 @media only screen and (max-width: 800px) {
-    #ImageListItem{
+    #ImageListItem {
         width: 200px;
     }
-    #ImageListItem > img {
+    #ImageListItem>img {
         height: 300px;
         width: 180px;
     }
