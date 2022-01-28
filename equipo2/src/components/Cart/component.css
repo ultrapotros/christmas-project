@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     width: 90%;
-    margin: 0 auto;
+    margin: 0px auto;
+    margin-bottom: 100px;
 }
 
 .list-items {

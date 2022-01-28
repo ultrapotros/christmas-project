@@ -123,8 +123,7 @@ function SingleProduct() {
   };
 
   //There are times when the component is mounted without the context with data arriving.
-  let isData = productData !== undefined;
-  isData = false;
+  const isData = productData !== undefined;
   //We render in case we have data already loaded. In case of no data, 
   //circular load is displayed.
   if (isData) {
@@ -269,7 +268,7 @@ function SingleProduct() {
                 </div>
               </DialogContent>
               <DialogActions>
-                <Link className="modal-button" to="/cart">
+                <a className="modal-button" href="/cart">
                   <Button
                     sx={{
                       backgroundColor: "#ebb032",
@@ -281,7 +280,7 @@ function SingleProduct() {
                     >
                     Go to the cart
                   </Button>
-                </Link>
+                </a>
                 <Button
                   variant="outlined"
                   sx={{
