@@ -1,4 +1,5 @@
-import { Facebook , Instagram , LinkedIn , Twitter } from '@mui/icons-material'
+import { Facebook , Instagram , LinkedIn , Twitter } from '@mui/icons-material';
+import { NavLink } from "react-router-dom";
 import React from "react";
 import './component.css';
 
@@ -19,7 +20,7 @@ function MyTabs() {
               /*we use pathname to assign id*/
               <div id={window.location.pathname === element.route ? 'active' : null}
                   key={`bottomnav${index}`} >
-                  <a href= {element.route}>{element.label}</a>
+                  <NavLink to= {element.route}>{element.label}</NavLink>
               </div>)}
       </div>
     </React.Fragment>

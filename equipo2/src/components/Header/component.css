@@ -62,12 +62,6 @@
 #headerNav a:hover {
     border-bottom: 3px solid #ebb032;
 }
-
-.cart-header:hover {
-    border-bottom: 3px solid #ebb032;
-    cursor: pointer;
-}
-
 #headerNav svg {
     max-height: max-content;
 }
@@ -76,12 +70,13 @@
     display: none;
 }
 
-#active {
+.headernav-bar .active {
     background-color: #ebb032;
     border-radius: 5px;
+    color: #23394d;
 }
 
-#active a:hover {
+#headerNav .active a:hover {
     border-bottom: 3px solid #23394d;
 }
 

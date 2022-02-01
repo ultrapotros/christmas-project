@@ -1,6 +1,6 @@
 
 import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   ShoppingCartRounded,
   MenuRounded,
@@ -84,7 +84,7 @@ export default function Header() {
             <Divider style={{ width: "100%" }} />
             <h4>{`TOTAL:  ${totalPrice.toFixed(2)}€`}</h4>
             <Divider style={{ width: "100%" }} />
-            <Link className="cart-button" to="/cart">
+            <NavLink exact activeClassName="active" className="cart-button" to="/cart">
             <Button
                 sx={{
                 backgroundColor: "#ebb032",
@@ -102,7 +102,7 @@ export default function Header() {
                 >
                 Go to the cart
             </Button>
-            </Link>
+            </NavLink>
         </div>
         );
     }
@@ -120,7 +120,7 @@ export default function Header() {
   return (
     <div className="header">
       <div className="topHeader">
-        <a href='/'><h1>THE BRIDGE STORE</h1></a>
+        <Link to='/'><h1>THE BRIDGE STORE</h1></Link>
         <div
           className="mobileIcon"
           onClick={() => setShowMobileMenu(!showMobileMenu)}
@@ -136,14 +136,14 @@ export default function Header() {
             {/*we use showMobileMenu to assign a class to show lateral menu */}
             {routes.map((element, index) => (
                 /*we use pathname to assign id*/
-                <div id={window.location.pathname === element.route ? "active" : null} 
+                <div className="headernav-bar"
                     key={`category${index}`}>
                     {element.route === "/cart" ? (
                         <div className="cart-header" onClick={toggleDrawer}>
-                            {element.label}
+                            <NavLink exact activeClassName="active" to={element.route}>{element.label}</NavLink>
                         </div>
                         ) : (
-                        <a href={element.route}>{element.label}</a>
+                        <NavLink exact activeClassName="active" to={element.route}>{element.label}</NavLink>
                         )}
                 </div>
             ))}

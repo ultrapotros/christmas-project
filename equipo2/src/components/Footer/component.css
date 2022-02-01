@@ -36,7 +36,7 @@
     margin-right: 2rem;
 }
 
-#nav #active {
+#nav .active {
     background-color: #ebb032;
     color: #23394d;
     border-radius: 5px;
