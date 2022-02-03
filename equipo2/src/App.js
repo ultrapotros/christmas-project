@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     async function fetchApi() {
       try {
-        let response = await axios.get("https://fakestoreapi.com/products");
+        let response = await axios.get("http://localhost:3001/api/products");
         setProducts(response.data);
       } catch (err) {
         console.log(err);
